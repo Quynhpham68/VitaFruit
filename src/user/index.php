@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <title>Fruitables - Vegetable Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
+    <meta content="" name="Search">
     <meta content="" name="description">
 
     <!-- Google Web Fonts -->
@@ -61,15 +61,37 @@
 
     <!-- Panel Start -->
     <div class="col-md-12 col-lg-12">
-        <div class="img_container" style="display: flex; justify-content: center;">
+        <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 108px;">
             <img src="./img/Minimalist Fresh Market Instagram Post.png" alt=""
-                style="height: 550px; width: 550px; object-fit: contain; margin-top: 108px;">
+                style="height: 550px; width: 550px; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
+
+            <!-- Nút Shop Now -->
+            <button style="
+                position: absolute;
+                bottom: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 10px 55px;
+                background-color: white;
+                color: #5c4033; /* Màu nâu */
+                font-weight: bold;
+                font-size: 16px;
+                font-family: 'Segoe UI', sans-serif;
+                border: 2px solid #5c4033;
+                border-radius: 30px;
+                cursor: pointer;
+                box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;"
+                onclick="document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });">
+                Shop Now
+            </button>
         </div>
     </div>
     <!-- Panel End -->
 
+
     <!-- Fruits Shop Start-->
-    <div class="container-fluid fruite py-5">
+    <div id="featured-products" class="container-fluid fruite py-5">
         <div class="container py-5">
             <div class="tab-class text-center">
                 <div class="row g-4">
@@ -77,24 +99,19 @@
                         <h1>Sản phẩm nổi bật</h1>
                     </div>
                     <div class="col-lg-8 text-end">
-                        <ul class="nav nav-pills d-inline-flex text-center mb-5">
-                            <li class="nav-item">
-                                <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill"
-                                    href="#tab-1">
-                                    <span class="text-dark" style="width: 130px;">Tất cả sản phẩm</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                    <span class="text-dark" style="width: 130px;">Rau</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                    <span class="text-dark" style="width: 130px;">Hoa quả</span>
-                                </a>
-                            </li>
+                        <div class="d-flex justify-content-end mb-4">
+                      <div class="dropdown">
+                        <button class="btn btn-outline-success dropdown-toggle rounded-pill px-4 py-2 bg-light text-dark"
+                                type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tất cả sản phẩm
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                            <li><a class="dropdown-item active" data-tab="#tab-1" href="#">Tất cả sản phẩm</a></li>
+                            <li><a class="dropdown-item" data-tab="#tab-2" href="#">Rau Củ</a></li>
+                            <li><a class="dropdown-item" data-tab="#tab-3" href="#">Hoa quả</a></li>
                         </ul>
+                        </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-content">
@@ -144,7 +161,7 @@
                             <div class="col-lg-12">
                                 <div class="row g-4">
                                     <?php
-                                        $qr = mysqli_query($code, "SELECT * FROM product WHERE category = 'Rau' LIMIT 8");
+                                        $qr = mysqli_query($code, "SELECT * FROM product WHERE category = 'Rau Củ' LIMIT 8");
 
                                         while ($row = mysqli_fetch_assoc($qr)) {
                                             $imagePath = "/VegetableWeb/img/product/" . $row['image'];
@@ -227,35 +244,8 @@
 
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-        <div class="container py-5">
-            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <a href="#">
-                            <h1 class="text-primary mb-0">Fruitables</h1>
-                            <p class="text-secondary mb-0">Fresh products</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex justify-content-end pt-3">
-                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
+    <!-- FOOTER -->
+    <?php include_once 'layout/footer.php'; ?>
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
             class="fa fa-arrow-up"></i></a>
@@ -271,6 +261,78 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', function () {
+        // Xóa active cũ ở dropdown
+        document.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+
+        // Ẩn tất cả tab
+        document.querySelectorAll('.tab-pane').forEach(tab => tab.classList.remove('show', 'active'));
+
+        // Hiện tab được chọn
+        const target = this.getAttribute('data-tab');
+        const selectedTab = document.querySelector(target);
+        if (selectedTab) {
+            selectedTab.classList.add('show', 'active');
+        }
+
+        // Cập nhật nội dung trên nút dropdown
+        document.getElementById('filterDropdown').textContent = this.textContent;
+        });
+    });
+    </script>
+    <!-- Flying Fruits & Veggies Start -->
+    <style>
+    .floating-icon {
+        position: fixed;
+        z-index: 1;
+        font-size: 24px;
+        animation: floatIcon 20s linear infinite;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    @keyframes floatIcon {
+        0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+        }
+        10% {
+        opacity: 0.6;
+        }
+        100% {
+        transform: translateY(-120vh) translateX(60px) rotate(360deg);
+        opacity: 0;
+        }
+    }
+    </style>
+
+    <script>
+    const foodIcons = [
+        "🍎", "🍌", "🍊", "🍉", "🍇", "🍍", "🍒", "🥝", "🍓",
+        "🥑", "🥭", "🍅", "🥬", "🥦", "🥕", "🌽", "🧄", "🧅"
+    ];
+
+    function createFloatingIcon() {
+        const icon = document.createElement("div");
+        icon.classList.add("floating-icon");
+        icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
+        icon.style.left = Math.random() * 100 + "vw";
+        icon.style.top = "100vh";
+        icon.style.fontSize = (Math.random() * 20 + 20) + "px";
+        icon.style.animationDuration = (Math.random() * 10 + 15) + "s";
+        document.body.appendChild(icon);
+
+        setTimeout(() => icon.remove(), 25000);
+    }
+
+    setInterval(createFloatingIcon, 600);
+    </script>
+    <!-- Flying Fruits & Veggies End -->
+
+
 </body>
 
 </html>

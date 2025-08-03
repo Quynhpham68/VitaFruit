@@ -30,7 +30,7 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Đăng nhập bởi:</div>
-            Minh Tri
+            Diễm Quỳnh
         </div>
     </nav>
 </div>

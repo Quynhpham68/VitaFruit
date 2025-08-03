@@ -69,6 +69,62 @@
             }
         }
     ?>
+    <style>
+    body.bg-primary {
+        background-color: #e6f4ea !important;
+    }
+
+    .btn-primary {
+        background-color: #81c784;
+        border-color: #81c784;
+    }
+
+    .btn-primary:hover {
+        background-color: #66bb6a;
+        border-color: #66bb6a;
+    }
+
+    .card-header {
+        background-color: #81c784;
+        color: white;
+        border-bottom: none;
+    }
+
+    a {
+        color: #388e3c;
+    }
+
+    a:hover {
+        color: #2e7d32;
+    }
+.floating-icon {
+    position: fixed;
+    top: -50px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0.2;
+    }
+}
+
+/* Đảm bảo form đè lên icon */
+.card {
+    position: relative;
+    z-index: 10;
+}
+
+</style>
+
 </head>
 
 <body class="bg-primary">
@@ -184,6 +240,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="scripts.js"></script>
+    <script>
+    const foodIcons = ["🍎", "🍓", "🍊", "🍇", "🥝", "🍅", "🍆", "🥦", "🥬", "🌽", "🍍", "🍌"];
+
+    function createFloatingIcon() {
+        const icon = document.createElement("div");
+        icon.classList.add("floating-icon");
+        icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
+
+        // Tạo vị trí ngẫu nhiên tránh vùng giữa (ví dụ: tránh từ 35vw đến 65vw)
+        let randomLeft = Math.random() * 100;
+        while (randomLeft > 35 && randomLeft < 65) {
+            randomLeft = Math.random() * 100;
+        }
+
+        icon.style.left = randomLeft + "vw";
+        icon.style.fontSize = (Math.random() * 20 + 20) + "px";
+        icon.style.animationDuration = (Math.random() * 10 + 15) + "s";
+        document.body.appendChild(icon);
+
+        setTimeout(() => icon.remove(), 25000);
+    }
+
+    setInterval(createFloatingIcon, 600);
+</script>
+
 </body>
 
 </html>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Fruitables - Vegetable Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
+    <meta content="" name="Search">
     <meta content="" name="description">
 
     <!-- Google Web Fonts -->
@@ -208,34 +208,8 @@
     <!-- Fruits Shop End-->
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-        <div class="container py-5">
-            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <a href="#">
-                            <h1 class="text-primary mb-0">Fruitables</h1>
-                            <p class="text-secondary mb-0">Fresh products</p>
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex justify-content-end pt-3">
-                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+    <!-- FOOTER -->
+    <?php include_once 'layout/footer.php'; ?>
 
 
     <!-- Back to Top -->
@@ -253,6 +227,56 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Flying Fruits & Veggies Start -->
+    <style>
+    .floating-icon {
+        position: fixed;
+        z-index: 1;
+        font-size: 24px;
+        animation: floatIcon 20s linear infinite;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    @keyframes floatIcon {
+        0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+        }
+        10% {
+        opacity: 0.6;
+        }
+        100% {
+        transform: translateY(-120vh) translateX(60px) rotate(360deg);
+        opacity: 0;
+        }
+    }
+    </style>
+
+    <script>
+    const foodIcons = [
+        "🍎", "🍌", "🍊", "🍉", "🍇", "🍍", "🍒", "🥝", "🍓",
+        "🥑", "🥭", "🍅", "🥬", "🥦", "🥕", "🌽", "🧄", "🧅"
+    ];
+
+    function createFloatingIcon() {
+        const icon = document.createElement("div");
+        icon.classList.add("floating-icon");
+        icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
+        icon.style.left = Math.random() * 100 + "vw";
+        icon.style.top = "100vh";
+        icon.style.fontSize = (Math.random() * 20 + 20) + "px";
+        icon.style.animationDuration = (Math.random() * 10 + 15) + "s";
+        document.body.appendChild(icon);
+
+        setTimeout(() => icon.remove(), 25000);
+    }
+
+    setInterval(createFloatingIcon, 600);
+    </script>
+    <!-- Flying Fruits & Veggies End -->
+
 </body>
 
 </html>

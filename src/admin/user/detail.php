@@ -40,7 +40,7 @@
                                     $row = mysqli_fetch_assoc($kq);
                                 ?>
                                 <div class="d-flex justify-content-between">
-                                    <h3>Người dùng có id là: <?php echo $id ?></h3>
+                                    <h3>Người dùng có ID là: <?php echo $id ?></h3>
                                 </div>
 
                                 <hr />

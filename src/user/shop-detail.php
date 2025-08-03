@@ -1,4 +1,4 @@
-<<<<<<< HEAD <!DOCTYPE html>
+ <!DOCTYPE html>
     <?php include("connect.php")?>
     <html lang="en">
 
@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <title>Fruitables - Vegetable Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
+        <meta content="" name="Search">
         <meta content="" name="description">
 
         <!-- Google Web Fonts -->

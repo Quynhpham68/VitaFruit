@@ -127,7 +127,7 @@
                                         <label class="form-label">Thể loại:</label>
                                         <select class="form-select" name="category">
                                             <option value="Hoa quả">Hoa quả</option>
-                                            <option value="Rau">Rau</option>
+                                            <option value="Rau">Rau Củ</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">

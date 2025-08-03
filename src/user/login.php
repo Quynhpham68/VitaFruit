@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-=======
 <?php session_start(); ?>
->>>>>>> 3281c6f (code cart)
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -14,7 +11,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-success">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -43,7 +40,6 @@
                                             </div>
                                         </form>
 
-<<<<<<< HEAD
                                         <?php
                                         session_start();
 
@@ -63,7 +59,6 @@
                                         }
                                         ?>
 
-=======
                                         <?php // Gọi session trước khi gửi dữ liệu nào khác đến trình duyệt
 
                                             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -75,7 +70,6 @@
                                                 exit(); // Dừng script sau khi chuyển hướng
                                             }
                                             ?>
->>>>>>> 3281c6f (code cart)
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
@@ -90,7 +84,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2025</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

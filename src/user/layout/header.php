@@ -7,7 +7,9 @@
             <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
                 <div class="navbar-nav ">
                     <a href="/VegetableWeb/src/user/index.php" class="nav-item nav-link active">Trang Chủ</a>
+                    <a href="/VegetableWeb/src/user/about.php" class="nav-item nav-link">Giới thiệu</a>
                     <a href="/VegetableWeb/src/user/shop.php" class="nav-item nav-link">Sản phẩm</a>
+                    <a href="/VegetableWeb/src/user/contact.php" class="nav-item nav-link">Liên hệ</a>
                 </div>
                 <div class="d-flex m-3 me-0">
                     <?php

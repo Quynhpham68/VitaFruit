@@ -53,10 +53,10 @@
             {
                 include_once '../../../include/database.php';
                 $file = "";
-                if (isset($_FILES['MinhTriFile']['tmp_name']) && !empty($_FILES['MinhTriFile']['tmp_name'])) {
+                if (isset($_FILES['DiemQuynhFile']['tmp_name']) && !empty($_FILES['DiemQuynhFile']['tmp_name'])) {
                     $file = time() . ".jpg";
                     $tenFile = "C:/xampp/htdocs/VegetableWeb/img/product/" . $file;
-                    move_uploaded_file($_FILES['MinhTriFile']['tmp_name'], $tenFile);
+                    move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 } else {
                     $file = $image;
                 }

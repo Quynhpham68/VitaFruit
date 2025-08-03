@@ -39,7 +39,7 @@
                                     $id = $_GET['id'];
                                 ?>
                                 <div class="d-flex justify-content-between">
-                                    <h3>Xóa đánh giá có id là: <?php echo $id; ?> </h3>
+                                    <h3>Xóa đánh giá có ID là: <?php echo $id; ?> </h3>
                                 </div>
 
                                 <hr />
@@ -48,7 +48,7 @@
                                 </div>
                                 <form method="post" action="">
                                     <div class="mb-3" style="display: none;">
-                                        <label class="form-label">Id:</label>
+                                        <label class="form-label">ID:</label>
                                         <input value=<?php echo $id ?> type="text" class="form-control" name="id" />
                                     </div>
                                     <button class="btn btn-danger">Confirm</button>

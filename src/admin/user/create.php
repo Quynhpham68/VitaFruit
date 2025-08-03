@@ -166,7 +166,7 @@
                 $code = connect();
                 $file = time().".jpg";
                 $tenFile = "C:/xampp/htdocs/VegetableWeb/img/avatar/".$file;
-                $result = move_uploaded_file($_FILES['MinhTriFile']['tmp_name'], $tenFile);
+                $result = move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 $password = password_hash($password, PASSWORD_DEFAULT);
                 $query =  "INSERT INTO user (email, name, password, phone, image, roleID )
                     VALUES ('$email', '$fullname', '$password', '$phone', '$file', '$roleID')";

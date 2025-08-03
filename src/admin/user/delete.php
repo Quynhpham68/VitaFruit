@@ -37,7 +37,7 @@
                                     $id = $_GET['id'];
                                 ?>
                                 <div class="d-flex justify-content-between">
-                                    <h3>Xóa người dùng có id là: <?php echo $id; ?> </h3>
+                                    <h3>Xóa người dùng có ID là: <?php echo $id; ?> </h3>
                                 </div>
 
                                 <hr />

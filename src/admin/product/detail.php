@@ -42,7 +42,7 @@
                                     $row = mysqli_fetch_assoc($kq);
                                 ?>
                                 <div class="d-flex justify-content-between">
-                                    <h3>Sản phẩm có id là: <?php echo $id ?></h3>
+                                    <h3>Sản phẩm có ID là: <?php echo $id ?></h3>
                                 </div>
 
                                 <hr />
