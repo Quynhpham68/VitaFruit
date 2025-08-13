@@ -1,0 +1,51 @@
+/* Phần style inline cho button SHOP NOW */
+.img_container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 85px; /* giảm từ 95px xuống 50px trước đó bạn ghi margin-top:85px */
+}
+
+.img_container button.shop-now-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 55px;
+    background-color: white;
+    color: #5c4033;
+    font-weight: 900; /* siêu đậm */
+    font-size: 16px; /* giữ nguyên kích thước */
+    letter-spacing: 1px; /* giãn chữ nhẹ để nét rõ hơn */
+    font-family: 'Segoe UI', sans-serif;
+    border: 2px solid #5c4033;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* Phần style cho floating icon */
+.floating-icon {
+    position: fixed;
+    z-index: 1;
+    font-size: 24px;
+    animation: floatIcon 20s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes floatIcon {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-120vh) translateX(60px) rotate(360deg);
+        opacity: 0;
+    }
+}
+

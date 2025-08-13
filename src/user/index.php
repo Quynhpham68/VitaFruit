@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Fruitables - Vegetable Website Template</title>
+    <title>VitaFruit Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="Search">
     <meta content="" name="description">
@@ -15,9 +15,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
-        rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins&display=swap" rel="stylesheet">
+
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
@@ -33,6 +33,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -59,35 +61,19 @@
 
 
 
-    <!-- Panel Start -->
-    <div class="col-md-12 col-lg-12">
-        <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 108px;">
-            <img src="./img/Minimalist Fresh Market Instagram Post.png" alt=""
-                style="height: 550px; width: 550px; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
+   <!-- Panel Start -->
+<div class="col-md-12 col-lg-12">
+    <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 85px;"> <!-- giảm từ 95px xuống 50px -->
 
-            <!-- Nút Shop Now -->
-            <button style="
-                position: absolute;
-                bottom: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 10px 55px;
-                background-color: white;
-                color: #5c4033; /* Màu nâu */
-                font-weight: bold;
-                font-size: 16px;
-                font-family: 'Segoe UI', sans-serif;
-                border: 2px solid #5c4033;
-                border-radius: 30px;
-                cursor: pointer;
-                box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-                transition: all 0.3s ease;"
-                onclick="document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });">
-                Shop Now
-            </button>
-        </div>
+        <img src="./img/trang chủ.png" alt=""
+            style="max-width: 100%; max-height: 80vh; height: auto; width: auto; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
+
+       <button class="shop-now-btn" onclick="document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });">
+    SHOP NOW
+</button>
     </div>
-    <!-- Panel End -->
+</div>
+<!-- Panel End -->
 
 
     <!-- Fruits Shop Start-->
@@ -96,7 +82,7 @@
             <div class="tab-class text-center">
                 <div class="row g-4">
                     <div class="col-lg-4 text-start">
-                        <h1>Sản phẩm nổi bật</h1>
+                        <h1>SẢN PHẨM NỔI BẬT</h1>
                     </div>
                     <div class="col-lg-8 text-end">
                         <div class="d-flex justify-content-end mb-4">
@@ -283,54 +269,8 @@
         });
     });
     </script>
-    <!-- Flying Fruits & Veggies Start -->
-    <style>
-    .floating-icon {
-        position: fixed;
-        z-index: 1;
-        font-size: 24px;
-        animation: floatIcon 20s linear infinite;
-        opacity: 0.7;
-        pointer-events: none;
-    }
+    <script src="js/floating_icons.js"></script>
 
-    @keyframes floatIcon {
-        0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
-        opacity: 0;
-        }
-        10% {
-        opacity: 0.6;
-        }
-        100% {
-        transform: translateY(-120vh) translateX(60px) rotate(360deg);
-        opacity: 0;
-        }
-    }
-    </style>
-
-    <script>
-    const foodIcons = [
-        "🍎", "🍌", "🍊", "🍉", "🍇", "🍍", "🍒", "🥝", "🍓",
-        "🥑", "🥭", "🍅", "🥬", "🥦", "🥕", "🌽", "🧄", "🧅"
-    ];
-
-    function createFloatingIcon() {
-        const icon = document.createElement("div");
-        icon.classList.add("floating-icon");
-        icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
-        icon.style.left = Math.random() * 100 + "vw";
-        icon.style.top = "100vh";
-        icon.style.fontSize = (Math.random() * 20 + 20) + "px";
-        icon.style.animationDuration = (Math.random() * 10 + 15) + "s";
-        document.body.appendChild(icon);
-
-        setTimeout(() => icon.remove(), 25000);
-    }
-
-    setInterval(createFloatingIcon, 600);
-    </script>
-    <!-- Flying Fruits & Veggies End -->
 
 
 </body>

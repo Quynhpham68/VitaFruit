@@ -1,15 +1,29 @@
 <div class="container-fluid fixed-top">
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="/VegetableWeb/src/user/index.php" class="navbar-brand">
-                <h1 class="text-primary display-6">FreshMarket</h1>
+            <a href="/VegetableWeb/src/user/index.php" class="navbar-brand d-flex align-items-center">
+                <img src="/VegetableWeb/img/avatar/logo.png" alt="Logo" 
+                    style="height: 40px; width: auto; margin-right: 10px;">
+            <h1 class="text-primary display-6 mb-0">VitaFruit</h1>
             </a>
             <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
-                <div class="navbar-nav ">
-                    <a href="/VegetableWeb/src/user/index.php" class="nav-item nav-link active">Trang Chủ</a>
-                    <a href="/VegetableWeb/src/user/about.php" class="nav-item nav-link">Giới thiệu</a>
-                    <a href="/VegetableWeb/src/user/shop.php" class="nav-item nav-link">Sản phẩm</a>
-                    <a href="/VegetableWeb/src/user/contact.php" class="nav-item nav-link">Liên hệ</a>
+                <div class="navbar-nav">
+                    <a href="/VegetableWeb/src/user/index.php" 
+                    class="nav-item nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') echo 'active'; ?>">
+                    Trang Chủ
+                    </a>
+                    <a href="/VegetableWeb/src/user/about.php" 
+                    class="nav-item nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'about.php') echo 'active'; ?>">
+                    Giới thiệu
+                    </a>
+                    <a href="/VegetableWeb/src/user/shop.php" 
+                    class="nav-item nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'shop.php') echo 'active'; ?>">
+                    Sản phẩm
+                    </a>
+                    <a href="/VegetableWeb/src/user/contact.php" 
+                    class="nav-item nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'contact.php') echo 'active'; ?>">
+                    Liên hệ
+                    </a>
                 </div>
                 <div class="d-flex m-3 me-0">
                     <?php

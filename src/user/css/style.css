@@ -499,3 +499,87 @@
 }
 /*** Footer End ***/
 
+/***about***/
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 120px;
+    overflow-x: hidden;
+}
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto 80px auto;
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+.btn-success {
+    background-color: #c20f1a;
+    border-color: #c20f1a;
+}
+.btn-success:hover {
+    background-color: #902c29;
+    border-color: #902c29;
+}
+
+/***Contact***/
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 120px;
+    overflow-x: hidden;
+}
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto 80px auto;
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+.btn-success {
+    background-color: #c20f1a;
+    border-color: #c20f1a;
+}
+.btn-success:hover {
+    background-color: #902c29;
+    border-color: #902c29;
+}
+
+/* Phần style cho floating icon */
+.floating-icon {
+    position: fixed;
+    z-index: 1;
+    font-size: 24px;
+    animation: floatIcon 20s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes floatIcon {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-120vh) translateX(60px) rotate(360deg);
+        opacity: 0;
+    }
+}
+

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Fruitables - Vegetable Website Template</title>
+    <title>VitaFruit Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="Search">
     <meta content="" name="description">
@@ -12,10 +12,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&display=swap" rel="stylesheet">
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -30,6 +27,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -62,7 +61,7 @@
         <div class="modal-content rounded-0">
             <div class="modal-body d-flex align-items-center">
                 <form class="input-group w-75 mx-auto d-flex" method="get" action="./shop.php">
-                    <input type="text" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1"
+                    <input type="text" class="form-control p-3" placeholder="Search" aria-describedby="search-icon-1"
                         name="text-search">
                     <input type="submit" class="input-group-text" value="Search" name="input-search">
                 </form>
@@ -113,7 +112,7 @@
                                         <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
                                         <div class="position-absolute"
                                             style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                            <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3>
+                                            <h3 class="text-secondary fw-bold">Vita <br> Fruits <br> Banner</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -227,55 +226,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-    <!-- Flying Fruits & Veggies Start -->
-    <style>
-    .floating-icon {
-        position: fixed;
-        z-index: 1;
-        font-size: 24px;
-        animation: floatIcon 20s linear infinite;
-        opacity: 0.7;
-        pointer-events: none;
-    }
-
-    @keyframes floatIcon {
-        0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
-        opacity: 0;
-        }
-        10% {
-        opacity: 0.6;
-        }
-        100% {
-        transform: translateY(-120vh) translateX(60px) rotate(360deg);
-        opacity: 0;
-        }
-    }
-    </style>
-
-    <script>
-    const foodIcons = [
-        "🍎", "🍌", "🍊", "🍉", "🍇", "🍍", "🍒", "🥝", "🍓",
-        "🥑", "🥭", "🍅", "🥬", "🥦", "🥕", "🌽", "🧄", "🧅"
-    ];
-
-    function createFloatingIcon() {
-        const icon = document.createElement("div");
-        icon.classList.add("floating-icon");
-        icon.textContent = foodIcons[Math.floor(Math.random() * foodIcons.length)];
-        icon.style.left = Math.random() * 100 + "vw";
-        icon.style.top = "100vh";
-        icon.style.fontSize = (Math.random() * 20 + 20) + "px";
-        icon.style.animationDuration = (Math.random() * 10 + 15) + "s";
-        document.body.appendChild(icon);
-
-        setTimeout(() => icon.remove(), 25000);
-    }
-
-    setInterval(createFloatingIcon, 600);
-    </script>
-    <!-- Flying Fruits & Veggies End -->
+    <script src="js/floating_icons.js"></script>
 
 </body>
 
