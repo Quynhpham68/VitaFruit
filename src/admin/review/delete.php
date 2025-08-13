@@ -56,13 +56,13 @@
 
                                 <?php
                                         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                            $id = $_POST['id'];
-                                            $query = "delete from review u where u.id = " .$id;
+                                            $id = intval($_POST['id']);  // ép kiểu số nguyên để an toàn
+                                            $query = "DELETE FROM review WHERE id = $id";
                                             delete($query);
-                                                echo '<script type="text/javascript">
-                                                        window.location.href = "/VegetableWeb/src/admin/review/show.php?page=1";
-                                                      </script>';
-                                                exit();
+                                            echo '<script type="text/javascript">
+                                                    window.location.href = "/VegetableWeb/src/admin/review/show.php?page=1";
+                                                </script>';
+                                            exit();
                                         }
                                 ?>
 

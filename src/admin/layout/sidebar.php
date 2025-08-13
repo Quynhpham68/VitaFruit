@@ -26,6 +26,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Phản hồi
                 </a>
+                 <a class="nav-link" href="/VegetableWeb/src/admin/contact/show.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+                    Liên hệ
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

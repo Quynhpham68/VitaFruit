@@ -2,7 +2,24 @@
 <?php 
 include("connect.php"); 
 session_start(); 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Dùng biến $code thay vì $conn
+    $name = mysqli_real_escape_string($code, $_POST['name']);
+    $email = mysqli_real_escape_string($code, $_POST['email']);
+    $message = mysqli_real_escape_string($code, $_POST['message']);
+
+    $sql = "INSERT INTO contact (name, email, message, created_at) VALUES ('$name', '$email', '$message', NOW())";
+
+    if (mysqli_query($code, $sql)) {
+        echo "<script>alert('Cảm ơn bạn đã liên hệ với VitaFruit.'); window.location.href='contact.php';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Có lỗi xảy ra. Vui lòng thử lại!');</script>";
+    }
+}
 ?>
+
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
