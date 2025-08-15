@@ -43,9 +43,8 @@
                                 ?>
                                 <div class="d-flex justify-content-between">
                                     <h3>BẢNG ĐƠN ĐẶT HÀNG</h3>
-                                    <p class="btn btn-primary">Tổng doanh thu: <?php echo $total ?> $</p>
+                                    <p class="btn btn-primary">Tổng doanh thu: <?php echo number_format($total, 0, '', '.'); ?> đ</p>
                                 </div>
-
                                 <hr />
                                 <table class=" table table-bordered table-hover" style="text-align: center;">
                                     <thead>
@@ -85,7 +84,7 @@
                                                         <td>{$order['name']}</td>
                                                         <td>{$order['address']}</td>
                                                         <td>{$order['phone']}</td>
-                                                        <td>$total $</td>
+                                                        <td>" . number_format($total, 0, '', '.') . " đ</td>
                                                         <td>{$order['status']}</td>
                                                         <td>
                                                             <a href='/VegetableWeb/src/admin/order/detail.php?id={$order['id']}&page=1' class='btn btn-success'>Xem chi tiết</a>";

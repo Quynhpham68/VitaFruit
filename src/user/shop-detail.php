@@ -105,13 +105,58 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <h4 class="fw-bold mb-3" style="color: rgba(214, 55, 55, 0.493);">
+                                <h4 class="fw-bold mb-3" style="color: rgba(214, 55, 55, 0.8); font-size:2rem;">
                                     <?php echo $product['name'] ?></h4>
                                 <p class="mb-4"><?php echo $product['category']?></p>
                                 <p class="mb-4">Đã bán: <?php echo $product['sold'] ?></p>
                                 <h5 class="fw-bold mb-3">
-                                    <?php echo $product['price']?> $
+                                    <?php 
+                                    $price = floatval($product['price']); 
+                                    $discountPrice = !empty($product['discount_price']) ? floatval($product['discount_price']) : 0;
+
+                                    if ($discountPrice > 0 && $discountPrice < $price) {
+                                        $percent = round((($price - $discountPrice) / $price) * 100);
+
+                                        // Giá đã giảm
+                                        echo '<p style="
+                                                font-weight:700; 
+                                                color:#212529;  /* màu đen đậm giống hình */
+                                                font-size:1.25rem; 
+                                                font-family: Arial, sans-serif; 
+                                                margin:0;">
+                                                $' . number_format($discountPrice, 0, ',', '.') . ' / kg
+                                            </p>';
+
+                                        // Giá gốc + % giảm
+                                        echo '<p style="
+                                                margin:0; 
+                                                font-family: Arial, sans-serif; 
+                                                font-size:1rem;">
+                                                <span style="
+                                                    text-decoration: line-through; 
+                                                    color:#6c757d;  
+                                                    margin-right:10px;">
+                                                    $' . number_format($price, 0, ',', '.') . '
+                                                </span>
+                                                <span style="color:#d63737;">  
+                                                    Giảm: ' . $percent . '% 
+                                                </span>
+                                            </p>';
+                                    } else {
+                                        echo '<p style="
+                                                font-weight:700; 
+                                                color:#212529;  /* màu đen đậm */
+                                                font-size:1rem; 
+                                                font-family: Arial, sans-serif; 
+                                                margin:0;">
+                                                $' . number_format($price, 0, ',', '.') . ' / kg
+                                            </p>';
+                                    }
+                                    ?>
+
                                 </h5>
+
+
                                 <div class="d-flex mb-4">
                                     Xếp hạng:
                                     <?php
@@ -264,7 +309,7 @@
                                         <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
                                         <div class="position-absolute"
                                             style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                            <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3>
+                                            <h3 class="text-secondary fw-bold">Vita <br> Fruits <br> Banner</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -281,8 +326,8 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <a href="#">
-                                    <h1 class="text-primary mb-0">Fruitables</h1>
-                                    <p class="text-secondary mb-0">Fresh products</p>
+                                    <h1 class="text-primary mb-0">VitaFruit</h1>
+                                    <p class="text-secondary mb-0">Rau củ sạch - Tươi mỗi ngày</p>
                                 </a>
                             </div>
                             <div class="col-lg-6">

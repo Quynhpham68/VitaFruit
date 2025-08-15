@@ -583,3 +583,116 @@ body {
     }
 }
 
+/*cart detail*/
+.fruite-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fruite-img img {
+  height: 200px;       /* chiều cao cố định hình ảnh */
+  object-fit: cover;
+  width: 100%;
+}
+
+.fruite-item > .p-4 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.fruite-item p.flex-grow-1 {
+  flex-grow: 1;
+}
+
+
+.fruite-item-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    pointer-events: auto; /* chắc chắn click hoạt động */
+}
+
+.fruite-img img {
+    pointer-events: none; /* click đi thẳng vào thẻ a, không bị ảnh chặn */
+}
+
+/* Nếu có phần tử overlay, đảm bảo z-index thấp */
+.img_container,
+#chat-box,
+#chat-icon {
+    z-index: auto;
+}
+
+
+
+/*cart detail*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Tiêu đề chính */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Thẻ p */
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Breadcrumb */
+.breadcrumb a {
+    font-family: 'Open Sans', sans-serif;
+    color: #d63737;
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+button, .btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Thẻ span, badge */
+span, .badge {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+/* Tab nav */
+.nav-link {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.nav-link.active {
+    color: #d63737 !important;
+}
+
+/* Footer */
+.footer p, .footer a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #ccc;
+}
+.footer h1, .footer h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}

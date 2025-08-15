@@ -23,7 +23,7 @@
         }
             $productId = $_POST['idProduct'];
 
-            $query = "select id, quantity from cart_detail where productId = $productId";
+            $query = "SELECT id, quantity FROM cart_detail WHERE productId = $productId AND cartId = $cartId";
             $kq = mysqli_query($code, $query);
             $query = "select price, quantity from product where id = $productId";
             $kq1 = mysqli_query($code, $query);

@@ -90,7 +90,8 @@
 
                         <div class="col-xl-4 col-md-6">
                             <div class="card bg-dark text-white mb-4">
-                                <div class="card-body">Tổng doanh thu: <?php echo $total; ?> $</div>
+                                <div class="card-body">Tổng doanh thu: <?php echo number_format($total, 0, '', '.'); ?> đ
+                                </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <p class="small text-white stretched-link"></p>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>

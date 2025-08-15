@@ -45,14 +45,16 @@
                                 <table class=" table table-bordered table-hover" style="text-align: center;">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Giá sản phẩm</th>
-                                            <th>Nhà sản xuất</th>
-                                            <th>Số lượng còn lại</th>
-                                            <th>Số lượng đã bán</th>
-                                            <th>Phân loại</th>
-                                            <th>Vai trò</th>
+                                            <th style="width: 5%;">ID</th>
+                                            <th style="width: 10%;">Tên sản phẩm</th>
+                                            <th style="width: 8%;">Giá sản phẩm</th>
+                                            <th style="width: 5%;">Khuyến mãi (%)</th>
+                                            <th style="width: 10%;">Giá sau khuyến mãi</th>
+                                            <th style="width: 12%;">Nhà sản xuất</th>
+                                            <th style="width: 5%;">SL còn lại</th>
+                                            <th style="width: 5%;">SL đã bán</th>
+                                            <th style="width: 8%;">Phân loại</th>
+                                            <th style="width: 25%;">Vai trò</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,15 +62,18 @@
                                             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                             $page = max($page, 1);
                                             $offset = ($page - 1) * 6;
-                                            $query = "SELECT id, name, price, factory, quantity, sold, category FROM product ORDER BY id LIMIT 6 OFFSET " . $offset ;
+                                            $query = "SELECT id, name, price, factory, quantity, sold, category, discount_percent FROM product ORDER BY id LIMIT 6 OFFSET " . $offset ;
                                             $kq = view($query);
                                             if ($kq && mysqli_num_rows($kq) > 0) {
                                             while ($product = mysqli_fetch_assoc($kq)) {
+                                                $discount_price = $product['price'] * (1 - $product['discount_percent'] / 100);
                                                 echo "
                                                 <tr>
                                                     <th>{$product['id']}</th>
                                                     <td>{$product['name']}</td>
-                                                    <td>{$product['price']} đ</td>
+                                                    <td>" . number_format($product['price'], 0, ',', '.') . " đ</td>
+                                                    <td>{$product['discount_percent']}%</td>
+                                                    <td>" . number_format($discount_price, 0, ',', '.') . " đ</td>
                                                     <td>{$product['factory']}</td>
                                                     <td>{$product['quantity']}</td>
                                                     <td>{$product['sold']}</td>
@@ -80,6 +85,7 @@
                                                     </td>
                                                 </tr>";
                                             }
+
                                             } else {
                                             echo "<tr>
                                                 <td colspan='7'>Không có dữ liệu</td>

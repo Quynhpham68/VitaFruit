@@ -89,6 +89,14 @@
                                             name="price" value="<?php echo isset($price) ? $price : ''; ?>" />
                                         <?php echo !empty($error['price']) ? '<div class="invalid-feedback">' . $error['price'] . '</div>' : ''; ?>
                                     </div>
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label class="form-label">Khuyến mãi (%):</label>
+                                        <input type="number" min="0" max="100"
+                                            class="form-control <?php echo !empty($error['discount_percent']) ? 'is-invalid' : ''; ?>"
+                                            name="discount_percent" value="<?php echo isset($discount_percent) ? $discount_percent : 0; ?>" />
+                                        <?php echo !empty($error['discount_percent']) ? '<div class="invalid-feedback">' . $error['discount_percent'] . '</div>' : ''; ?>
+                                    </div>
+
                                     <div class="mb-3 col-12">
                                         <label class="form-label">Miêu tả chi tiết:</label>
                                         <input type="text"

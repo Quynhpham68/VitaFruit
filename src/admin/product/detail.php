@@ -51,7 +51,7 @@
                                     <div class="card-header">
                                         Thông tin sản phẩm
                                     </div>
-                                    <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Khuyến mãi: <?php echo $row['discount_percent']; ?>%</li>
                                         <li class="list-group-item">ID: <?php echo $id; ?></li>
                                         <li class="list-group-item">Tên: <?php echo $row['name']; ?></li>
                                         <li class="list-group-item">Giá: <?php echo $row['price']; ?> đ</li>

@@ -82,8 +82,13 @@
                             else {
                                 $cart = mysqli_fetch_assoc($kq);
                                 $cartId = $cart['id'];
-                                $query = "SELECT cd.id, p.image, p.name, p.price, cd.quantity, (cd.quantity * p.price) as tien, p.quantity as slP, cd.price as cdPrice 
-                                        FROM cart_detail cd JOIN product p ON cd.productId = p.id WHERE cd.cartId = ".$cartId;
+                                $query = "SELECT cd.id, p.image, p.name, p.price, p.discount_price, cd.quantity,
+                                                (cd.quantity * IF(p.discount_price>0, p.discount_price, p.price)) as tien,
+                                                p.quantity as slP, 
+                                                IF(p.discount_price>0, p.discount_price, p.price) as cdPrice
+                                        FROM cart_detail cd 
+                                        JOIN product p ON cd.productId = p.id 
+                                        WHERE cd.cartId = ".$cartId;
                                 $kq = mysqli_query($code, $query);
                                 $tmp = mysqli_num_rows($kq);
                                 if (mysqli_num_rows($kq) == 0) {
@@ -121,7 +126,14 @@
 
                             <td>
                                 <p class="mb-0 mt-4">
-                                    <?php echo round($cd['price'], 2); ?>
+                                    <?php 
+                                        if($cd['discount_price'] > 0) {
+                                            echo '<span class="text-decoration-line-through text-muted me-2">'.number_format($cd['price'], 0, ',', '.').' đ</span>';
+                                            echo '<span class="text-danger">'.number_format($cd['cdPrice'], 0, ',', '.').' đ</span>';
+                                        } else {
+                                            echo number_format($cd['price'], 0, ',', '.') . ' đ';
+                                        }
+                                    ?>
                                 </p>
                             </td>
 
@@ -148,7 +160,7 @@
 
                             <td>
                                 <p class="mb-0 mt-4" data-cart-detail-id="<?php echo $cd['id']; ?>">
-                                    <?php echo round($cd['cdPrice'] * $cd['quantity'], 2); ?>
+                                    <?php echo number_format($cd['cdPrice'] * $cd['quantity'], 0, ',', '.'); ?> đ
                                 </p>
                             </td>
 
@@ -174,14 +186,14 @@
                 <div class="mt-5 row g-4 justify-content-start">
                     <div class="col-12 col-md-8">
                         <div class="bg-light rounded">
-                            <div class="p-4">
-                                <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Đơn
+                            <div class="p-4" style="font-family: 'Open Sans', sans-serif; font-size: 16px; color: #333;">
+                                <h1 class="order-heading mb-4">Thông Tin <span class="fw-normal">Đơn
                                         Hàng</span>
                                 </h1>
                                 <div class="d-flex justify-content-between mb-4">
                                     <h5 class="mb-0 me-4">Tạm tính:</h5>
                                     <p class="mb-0" data-cart-total-price="<?php echo $totalPrice ?>">
-                                        <?php echo $totalPrice?> đ
+                                        <?php echo number_format($totalPrice, 0, ',', '.'); ?> đ
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-between">
@@ -193,8 +205,8 @@
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>
-                                <p class="mb-0 pe-4" data-cart-total-price="<?php echo $totalPrice ?>">
-                                    <?php echo $totalPrice?> đ
+                                <p class="mb-0" data-cart-total-price="<?php echo $totalPrice ?>">
+                                    <?php echo number_format($totalPrice, 0, ',', '.'); ?> đ
                                 </p>
                             </div>
                             <form action="/VegetableWeb/src/user/cart/checkout.php?index=<?php echo $index?>"

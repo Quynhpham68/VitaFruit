@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <?php include("connect.php")?>
+<?php
+function format_price($price) {
+    if (floor($price) == $price) {
+        return number_format($price, 0, '', '.'); // dấu thập phân bỏ, dấu nghìn là '.'
+    } else {
+        return number_format($price, 2, ',', '.'); // 2 chữ số thập phân, dấu thập phân ',' và dấu nghìn '.'
+    }
+}
+?>
 <html lang="en">
 
 <head>
@@ -144,8 +153,22 @@
                                         <h4><?php echo $row['name']; ?></h4>
                                         <p><?php echo $row['short_desc']; ?></p>
                                         <div class="d-flex justify-content-between flex-lg-wrap">
-                                            <p class="text-dark fs-5 fw-bold mb-0 price">$<?php echo $row['price']; ?> /
-                                                kg</p>
+                                            <?php
+                                                $price = $row['price'];
+                                                $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
+
+                                                if ($discount > 0) {
+                                                    $discount_price = $price * (1 - $discount / 100);
+                                                    echo "<p class='text-dark fw-bold mb-1 text-center' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
+                                                    echo "<p class='mb-0 text-center'>
+                                                            <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
+                                                            <small class='text-danger'>Giảm: " . $discount . "%</small>
+                                                        </p>";
+                                                } else {
+                                                    echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
+                                                }
+                                            ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -185,9 +208,23 @@
                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom fruite-content">
                                         <h4><?php echo $row['name']; ?></h4>
                                         <p><?php echo $row['short_desc']; ?></p>
-                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                            <p class="text-dark fs-5 fw-bold mb-0 price">$<?php echo $row['price']; ?> /
-                                                kg</p>
+                                        <div class="d-flex justify-content-between flex-lg-wrap">                                            
+                                            <?php
+                                                $price = $row['price'];
+                                                $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
+
+                                                if ($discount > 0) {
+                                                    $discount_price = $price * (1 - $discount / 100);
+                                                    echo "<p class='text-dark fw-bold mb-1 text-center' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
+                                                    echo "<p class='mb-0 text-center'>
+                                                            <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
+                                                            <small class='text-danger'>Giảm: " . $discount . "%</small>
+                                                        </p>";
+                                                } else {
+                                                    echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
+                                                }
+                                            ?>
+
                                         </div>
                                     </div>
                                 </div>

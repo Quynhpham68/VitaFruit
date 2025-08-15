@@ -105,8 +105,12 @@
                              echo '</tr>';
                          }
                          else {
-                            $query = "SELECT p.image, p.name, p.price, cd.quantity, (cd.quantity * p.price) as tien
-                                    FROM cart_detail cd JOIN product p ON cd.productId = p.id WHERE cd.cartId = ".$idCart;
+                            $query = "SELECT p.image, p.name, p.price, p.discount_price, cd.quantity, 
+                                            (cd.quantity * IF(p.discount_price>0, p.discount_price, p.price)) as tien,
+                                            IF(p.discount_price>0, p.discount_price, p.price) as cdPrice
+                                    FROM cart_detail cd 
+                                    JOIN product p ON cd.productId = p.id 
+                                    WHERE cd.cartId = ".$idCart;
                             $kq = mysqli_query($code, $query);
                             while ($cd = mysqli_fetch_assoc($kq)) {
                         ?>
@@ -126,7 +130,14 @@
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">
-                                    <?php echo round($cd['price'], 2); ?> $
+                                    <?php 
+                                        if($cd['discount_price'] > 0) {
+                                            echo '<span class="text-decoration-line-through text-muted me-2">'.number_format($cd['price'], 0, ',', '.').' </span>';
+                                            echo '<span class="text-danger">'.number_format($cd['cdPrice'], 0, ',', '.').' </span>';
+                                        } else {
+                                            echo number_format($cd['price'], 0, ',', '.') ;
+                                        }
+                                    ?>
                                 </p>
                             </td>
                             <td>
@@ -137,10 +148,10 @@
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">
-                                    <?php echo round($cd['price'] * $cd['quantity'], 2); ?>
-                                    $
+                                    <?php echo number_format($cd['cdPrice'] * $cd['quantity'], 0, ',', '.'); ?>
                                 </p>
                             </td>
+
                         </tr>
                         <?php 
                                     } 
@@ -184,14 +195,14 @@
                     <div class="col-12 col-md-6">
                         <div class="bg-light rounded">
                             <div class="p-4">
-                                <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Thanh
+                                <h1 class="order-heading mb-4">Thông Tin <span class="fw-normal">Thanh
                                         Toán</span>
                                 </h1>
 
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-0 me-4">Phí vận chuyển</h5>
                                     <div class="">
-                                        <p class="mb-0">0 $</p>
+                                        <p class="mb-0">0 đ</p>
                                     </div>
                                 </div>
                                 <div class="mt-3 d-flex justify-content-between">
@@ -204,9 +215,9 @@
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>
                                 <p class="mb-0 pe-4">
-                                    <?php echo $totalPrice?>
-                                    $
+                                    <?php echo number_format($totalPrice, 0, ',', '.'); ?>
                                 </p>
+
                             </div>
                             <?php mysqli_close($code); ?>
                             <button

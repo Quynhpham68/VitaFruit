@@ -3,6 +3,15 @@
 <?php
         session_start();
 ?>
+<?php
+function format_price($price) {
+    if (floor($price) == $price) {
+        return number_format($price, 0, '', '.'); // dấu thập phân bỏ, dấu nghìn là '.'
+    } else {
+        return number_format($price, 2, ',', '.'); // 2 chữ số thập phân, dấu thập phân ',' và dấu nghìn '.'
+    }
+}
+?>
 <html lang="en">
 
 <head>
@@ -34,6 +43,8 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
+    <link href="css/chat.css" rel="stylesheet">
+    
 
 </head>
 
@@ -75,6 +86,19 @@
 </div>
 <!-- Panel End -->
 
+<!-- Biểu tượng chat -->
+<div id="chat-icon" title="Chat với chúng tôi">
+  <i class="fas fa-comment-alt"></i>
+</div>
+
+<!-- Khung chat (mặc định ẩn) -->
+<div id="chat-box" style="display: none; flex-direction: column;">
+  <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 10px; background: #f1f8e9; border-radius: 8px 8px 0 0;"></div>
+  <div style="display: flex; border-top: 1px solid #ccc; background: #dcedc8; border-radius: 0 0 8px 8px;">
+    <input id="chat-input" type="text" placeholder="Nhập tin nhắn..." style="flex: 1; border: none; padding: 10px; font-size: 14px; border-radius: 0 0 0 8px;" />
+    <button id="chat-send-btn" style="background: #7DB300; border: none; color: white; padding: 0 20px; cursor: pointer; border-radius: 0 0 8px 0;">Gửi</button>
+  </div>
+</div>
 
     <!-- Fruits Shop Start-->
     <div id="featured-products" class="container-fluid fruite py-5">
@@ -112,9 +136,8 @@
                                         while ($row = mysqli_fetch_assoc($qr)) {
                                             $imagePath = "/VegetableWeb/img/product/" . $row['image'];
                                             ?>
-                                    <div class="col-md-6 col-lg-4 col-xl-3">
-                                        <a href="./shop-detail.php?id=<?php echo $row['id']; ?>"
-                                            class="rounded position-relative fruite-item">
+                                    <div class="col-md-6 col-lg-4 col-xl-3 d-flex">
+                                        <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="rounded position-relative fruite-item d-flex flex-column w-100 h-100">
                                             <div class="fruite-img">
                                                 <img src="<?php echo $imagePath; ?>" class="img-fluid w-100 rounded-top"
                                                     style="height: 200px; object-fit: cover;">
@@ -126,10 +149,23 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4><?php echo $row['name']; ?></h4>
                                                 <p><?php echo $row['short_desc']; ?></p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0 price">
-                                                        $<?php echo $row['price']; ?> / kg</p>
-                                                </div>
+                                                <div class="text-center">
+                                                    <?php
+                                                        $price = $row['price'];
+                                                        $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
+
+                                                        if ($discount > 0) {
+                                                            $discount_price = $price * (1 - $discount / 100);
+                                                            echo "<p class='text-dark fw-bold mb-1 text-center' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
+                                                            echo "<p class='mb-0 text-center'>
+                                                                    <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
+                                                                    <small class='text-danger'>Giảm: " . $discount . "%</small>
+                                                                </p>";
+                                                        } else {
+                                                            echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
+                                                        }
+                                                    ?>
+                                        </div>
                                             </div>
                                         </a>
                                     </div>
@@ -152,9 +188,8 @@
                                         while ($row = mysqli_fetch_assoc($qr)) {
                                             $imagePath = "/VegetableWeb/img/product/" . $row['image'];
                                             ?>
-                                    <div class="col-md-6 col-lg-4 col-xl-3">
-                                        <a href="./shop-detail.php?id=<?php echo $row['id']; ?>"
-                                            class="rounded position-relative fruite-item">
+                                    <div class="col-md-6 col-lg-4 col-xl-3 d-flex">
+                                        <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="rounded position-relative fruite-item d-flex flex-column w-100 h-100">
                                             <div class="fruite-img">
                                                 <img src="<?php echo $imagePath; ?>" class="img-fluid w-100 rounded-top"
                                                     style="height: 200px; object-fit: cover;">
@@ -166,10 +201,24 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4><?php echo $row['name']; ?></h4>
                                                 <p><?php echo $row['short_desc']; ?></p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0 price">
-                                                        $<?php echo $row['price']; ?> / kg</p>
+                                                <div class="text-center">
+                                                    <?php
+                                                        $price = $row['price'];
+                                                        $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
+
+                                                        if ($discount > 0) {
+                                                            $discount_price = $price * (1 - $discount / 100);
+                                                            echo "<p class='text-dark fw-bold mb-1' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
+                                                            echo "<p class='mb-0'>
+                                                                    <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
+                                                                    <small class='text-danger'>Giảm: " . $discount . "%</small>
+                                                                </p>";
+                                                        } else {
+                                                            echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
+                                                        }
+                                                    ?>
                                                 </div>
+
                                             </div>
                                         </a>
                                     </div>
@@ -192,9 +241,8 @@
                                         while ($row = mysqli_fetch_assoc($qr)) {
                                             $imagePath = "/VegetableWeb/img/product/" . $row['image'];
                                             ?>
-                                    <div class="col-md-6 col-lg-4 col-xl-3">
-                                        <a href="./shop-detail.php?id=<?php echo $row['id']; ?>"
-                                            class="rounded position-relative fruite-item">
+                                    <div class="col-md-6 col-lg-4 col-xl-3 d-flex">
+                                        <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="rounded position-relative fruite-item d-flex flex-column w-100 h-100">
                                             <div class="fruite-img">
                                                 <img src="<?php echo $imagePath; ?>" class="img-fluid w-100 rounded-top"
                                                     style="height: 200px; object-fit: cover;">
@@ -206,9 +254,22 @@
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4><?php echo $row['name']; ?></h4>
                                                 <p><?php echo $row['short_desc']; ?></p>
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0 price">
-                                                        $<?php echo $row['price']; ?> / kg</p>
+                                                <div class="text-center">
+                                                    <?php
+                                                        $price = $row['price'];
+                                                        $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
+
+                                                        if ($discount > 0) {
+                                                            $discount_price = $price * (1 - $discount / 100);
+                                                            echo "<p class='text-dark fw-bold mb-1 text-center' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
+                                                            echo "<p class='mb-0 text-center'>
+                                                                    <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
+                                                                    <small class='text-danger'>Giảm: " . $discount . "%</small>
+                                                                </p>";
+                                                        } else {
+                                                            echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
+                                                        }
+                                                    ?>
                                                 </div>
                                             </div>
                                         </a>
@@ -225,10 +286,6 @@
         </div>
     </div>
     <!-- Fruits Shop End-->
-
-
-
-
 
     <!-- FOOTER -->
     <?php include_once 'layout/footer.php'; ?>
@@ -270,6 +327,7 @@
     });
     </script>
     <script src="js/floating_icons.js"></script>
+    <script src="js/chat.js"></script>
 
 
 

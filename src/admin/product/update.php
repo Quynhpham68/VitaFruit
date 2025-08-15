@@ -31,6 +31,7 @@
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = isset($_POST['name']) ? $_POST['name'] : '';
             $price = isset($_POST['price']) ? $_POST['price'] : '';
+            $discount = isset($_POST['discount']) ? (int)$_POST['discount'] : 0;
             $details_desc = isset($_POST['details_desc']) ? $_POST['details_desc'] : '';
             $short_desc = isset($_POST['short_desc']) ? $_POST['short_desc'] : '';
             $quantity= isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
@@ -41,6 +42,16 @@
             {
                 $error['name'] = 'Tên không được để trống';
             }
+            // Bảo vệ giới hạn % hợp lệ
+            if ($discount < 0) $discount = 0;
+            if ($discount > 100) $discount = 100;
+
+            $final_price = $price;
+            if ($discount > 0) {
+                $final_price = $price - ($price * $discount / 100);
+                $final_price = round($final_price, 2);
+            }
+
             if(empty($_POST['details_desc']))
             {
                 $error['details_desc'] = 'Miêu tả chi tiết không được để trống';
@@ -60,19 +71,25 @@
                 } else {
                     $file = $image;
                 }
-                $query = "UPDATE product SET name = '$name', price = $price, details_desc = '$details_desc', image = '$file', short_desc = '$short_desc', factory = '$factory', quantity = $quantity WHERE id = '$id'";
+                // Lưu giá đã giảm vào DB
+                $query = "UPDATE product 
+                    SET name = '$name', 
+                        price = $price, 
+                        details_desc = '$details_desc', 
+                        image = '$file', 
+                        short_desc = '$short_desc', 
+                        factory = '$factory', 
+                        quantity = $quantity, 
+                        discount_percent = $discount
+                    WHERE id = '$id'";
                 if (update($query)) {
                     echo '<script type="text/javascript">
                             window.location.href = "/VegetableWeb/src/admin/product/show.php?page=1";
-                          </script>';
+                        </script>';
                     exit();
                 } else {
                     echo "Error: " . mysqli_error($code);
                 }
-            }
-            else
-            {
-               echo 1;
             }
         }
     ?>
@@ -136,6 +153,12 @@
                                             name="price" value="<?php echo isset($price) ? $price : ''; ?>" />
                                         <?php echo !empty($error['price']) ? '<div class="invalid-feedback">' . $error['price'] . '</div>' : ''; ?>
                                     </div>
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label class="form-label">Mã giảm giá (%):</label>
+                                        <input type="number" class="form-control" name="discount" min="0" max="100"
+                                            value="<?php echo isset($_POST['discount']) ? $_POST['discount'] : ''; ?>" />
+                                    </div>
+
 
                                     <div class="mb-3 col-12">
                                         <label class="form-label">Miêu tả chi tiết:</label>
@@ -190,7 +213,7 @@
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Ảnh sản phẩm:</label>
                                         <input class="form-control" type="file" id="avatarFile"
-                                            accept=".png, .jpg, .jpeg" name="MinhTriFile" />
+                                            accept=".png, .jpg, .jpeg" name="DiemQuynhFile" />
                                     </div>
 
                                     <div class="col-12 mb-3">

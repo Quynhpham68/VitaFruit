@@ -93,3 +93,15 @@ CREATE TABLE `review` (
   CONSTRAINT `review_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
   CONSTRAINT `review_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`id`)
 ) ;
+
+CREATE TABLE contact (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE contact ADD reply TEXT NULL;
+ALTER TABLE product ADD COLUMN discount_percent INT DEFAULT 0;
+ALTER TABLE product ADD discount_price DECIMAL(10,2) NULL DEFAULT NULL;

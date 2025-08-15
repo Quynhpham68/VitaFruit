@@ -49,7 +49,7 @@
                                         $total = $order['total_price'];
                                         $total = round($total, 1);
                                     ?>
-                                    <p class="btn btn-primary">Tổng doanh thu: <?php echo $total;?> $</p>
+                                    <p class="btn btn-primary">Tổng doanh thu: <?php echo number_format($total, 0, '', '.'); ?> đ</p>
                                 </div>
 
                                 <hr />
@@ -78,9 +78,9 @@
                                                 <tr>
                                                     <th>$stt</th>
                                                     <td>{$order['product_name']}</td>
-                                                    <td>{$order['price']} $</td>
+                                                    <td>".number_format($order['price'], 0, '', '.')." đ</td>
                                                     <td>{$order['quantity']}</td>
-                                                    <td>{$order['total_price']} $</td>
+                                                    <td>".number_format($order['total_price'], 0, '', '.')." đ</td>
                                                 </tr>";
                                                 $stt++;
                                             }

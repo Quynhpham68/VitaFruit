@@ -232,3 +232,11 @@
     });
 })(jQuery);
 
+function format_price($price) {
+    if (floor($price) == $price) {
+        return number_format($price, 0);
+    } else {
+        return number_format($price, 2);
+    }
+}
+
