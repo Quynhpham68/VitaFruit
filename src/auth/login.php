@@ -107,18 +107,21 @@
     top: -50px;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.7;
     animation: fall linear infinite;
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(-50px);
-        opacity: 0.8;
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
     }
     100% {
-        transform: translateY(110vh);
-        opacity: 0.2;
+        transform: translateY(-120vh) translateX(60px) rotate(360deg);
+        opacity: 0;
     }
 }
 
