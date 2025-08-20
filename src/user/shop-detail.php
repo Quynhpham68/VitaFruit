@@ -120,9 +120,9 @@
                                         // Giá đã giảm
                                         echo '<p style="
                                                 font-weight:700; 
-                                                color:#212529;  /* màu đen đậm giống hình */
+                                                color:#333;  /* màu đen đậm giống hình */
                                                 font-size:1.25rem; 
-                                                font-family: Arial, sans-serif; 
+                                                font-family: Open Sans, sans-serif;
                                                 margin:0;">
                                                 $' . number_format($discountPrice, 0, ',', '.') . ' / kg
                                             </p>';
@@ -130,7 +130,7 @@
                                         // Giá gốc + % giảm
                                         echo '<p style="
                                                 margin:0; 
-                                                font-family: Arial, sans-serif; 
+                                                font-family: Open Sans, sans-serif;
                                                 font-size:1rem;">
                                                 <span style="
                                                     text-decoration: line-through; 
@@ -145,9 +145,9 @@
                                     } else {
                                         echo '<p style="
                                                 font-weight:700; 
-                                                color:#212529;  /* màu đen đậm */
+                                                color:#555  /* màu đen đậm */
                                                 font-size:1rem; 
-                                                font-family: Arial, sans-serif; 
+                                                font-family: Open Sans, sans-serif; 
                                                 margin:0;">
                                                 $' . number_format($price, 0, ',', '.') . ' / kg
                                             </p>';

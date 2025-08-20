@@ -105,3 +105,19 @@ CREATE TABLE contact (
 ALTER TABLE contact ADD reply TEXT NULL;
 ALTER TABLE product ADD COLUMN discount_percent INT DEFAULT 0;
 ALTER TABLE product ADD discount_price DECIMAL(10,2) NULL DEFAULT NULL;
+
+CREATE TABLE chat_messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    message TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE chat_messages
+DROP COLUMN message,
+ADD COLUMN question TEXT NOT NULL,
+ADD COLUMN reply TEXT NOT NULL;
+ALTER TABLE contact
+ADD COLUMN user_id INT NULL,
+ADD CONSTRAINT contact_ibfk_1 FOREIGN KEY (user_id) REFERENCES user(id);

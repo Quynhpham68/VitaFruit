@@ -95,10 +95,13 @@
                          $tmp = mysqli_num_rows($kq);
                          $cart = mysqli_fetch_assoc($kq);
                          $idCart = $cart['id'];
-                         $query = "SELECT sum(price * quantity) as sum from cart_detail where cartId = ".$idCart;
-                         $kq1 = mysqli_query($code, $query);
-                         $sum = mysqli_fetch_assoc($kq1);
-                         $totalPrice = $sum['sum'];
+                         $query = "SELECT SUM(cd.quantity * IF(p.discount_price>0, p.discount_price, p.price)) as total
+                                    FROM cart_detail cd
+                                    JOIN product p ON cd.productId = p.id
+                                    WHERE cd.cartId = ".$idCart;
+                            $kq1 = mysqli_query($code, $query);
+                            $sum = mysqli_fetch_assoc($kq1);
+                            $totalPrice = $sum['total'];
                          if ($kq && mysqli_num_rows($kq) == 0) {
                              echo '<tr>';
                              echo '<td colspan="6">Không có sản phẩm trong giỏ hàng</td>';

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php include("connect.php")?>
+
 <?php
         session_start();
 ?>
@@ -43,16 +44,12 @@ function format_price($price) {
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
-    <link href="css/chat.css" rel="stylesheet">
+    <link href="api/chat.css" rel="stylesheet">
     
 
 </head>
 
 <body>
-
-    <?php
-        session_start();
-    ?>
 
     <!-- Spinner Start -->
     <div id="spinner"
@@ -73,32 +70,22 @@ function format_price($price) {
 
 
    <!-- Panel Start -->
-<div class="col-md-12 col-lg-12">
-    <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 85px;"> <!-- giảm từ 95px xuống 50px -->
+    <div class="col-md-12 col-lg-12">
+        <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 85px;"> <!-- giảm từ 95px xuống 50px -->
 
-        <img src="./img/trang chủ.png" alt=""
-            style="max-width: 100%; max-height: 80vh; height: auto; width: auto; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
+            <img src="./img/trang chủ.png" alt=""
+                style="margin-top: 60px; max-width: 100%; max-height: 80vh; height: auto; width: auto; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
 
-       <button class="shop-now-btn" onclick="document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });">
-    SHOP NOW
-</button>
+        <button class="shop-now-btn" onclick="document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });">
+        SHOP NOW
+    </button>
+        </div>
     </div>
-</div>
-<!-- Panel End -->
+    <!-- Panel End -->
 
-<!-- Biểu tượng chat -->
-<div id="chat-icon" title="Chat với chúng tôi">
-  <i class="fas fa-comment-alt"></i>
-</div>
+    <?php include 'api/chat.php'; 
+    ?>
 
-<!-- Khung chat (mặc định ẩn) -->
-<div id="chat-box" style="display: none; flex-direction: column;">
-  <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 10px; background: #f1f8e9; border-radius: 8px 8px 0 0;"></div>
-  <div style="display: flex; border-top: 1px solid #ccc; background: #dcedc8; border-radius: 0 0 8px 8px;">
-    <input id="chat-input" type="text" placeholder="Nhập tin nhắn..." style="flex: 1; border: none; padding: 10px; font-size: 14px; border-radius: 0 0 0 8px;" />
-    <button id="chat-send-btn" style="background: #7DB300; border: none; color: white; padding: 0 20px; cursor: pointer; border-radius: 0 0 8px 0;">Gửi</button>
-  </div>
-</div>
 
     <!-- Fruits Shop Start-->
     <div id="featured-products" class="container-fluid fruite py-5">
@@ -327,7 +314,7 @@ function format_price($price) {
     });
     </script>
     <script src="js/floating_icons.js"></script>
-    <script src="js/chat.js"></script>
+    <script src="api/chat.js"></script>
 
 
 

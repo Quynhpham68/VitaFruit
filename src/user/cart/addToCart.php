@@ -28,6 +28,12 @@
             $query = "select price, quantity from product where id = $productId";
             $kq1 = mysqli_query($code, $query);
             $price = mysqli_fetch_assoc($kq1);
+            // Kiểm tra hết hàng
+            if ($price['quantity'] <= 0) {
+                mysqli_close($code);
+                echo "<script>alert('Sản phẩm đã hết hàng, không thể thêm vào giỏ!'); window.location='/VegetableWeb/src/user/shop.php';</script>";
+                exit;
+            }
             if (mysqli_num_rows($kq) == 0)
             {
                 $priceP = $price['price'];

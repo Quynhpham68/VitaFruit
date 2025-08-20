@@ -98,10 +98,14 @@
                                 } 
                                 else
                                 {
-                                    $query = "SELECT sum(price * quantity) as sum from cart_detail where cartId = ".$cartId;
-                                    $kq1 = mysqli_query($code, $query);
-                                    $sum = mysqli_fetch_assoc($kq1);
-                                    $totalPrice = $sum['sum'];
+                                    $query = "SELECT SUM(cd.quantity * IF(p.discount_price>0, p.discount_price, p.price)) as total
+                                                FROM cart_detail cd
+                                                JOIN product p ON cd.productId = p.id
+                                                WHERE cd.cartId = ".$cartId;
+                                        $kq1 = mysqli_query($code, $query);
+                                        $sum = mysqli_fetch_assoc($kq1);
+                                        $totalPrice = $sum['total'];
+
                                     // Khởi tạo biến đếm $index
                                     $index = 0;
     
@@ -138,24 +142,30 @@
                             </td>
 
                             <td>
-                                <div class="input-group quantity mt-4" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
+                                <?php if ($cd['slP'] > 0) { ?>
+                                    <div class="input-group quantity mt-4" style="width: 100px;">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm text-center border-0"
+                                            value="<?php echo $cd['quantity']; ?>"
+                                            data-cart-detail-id="<?php echo $cd['id']; ?>"
+                                            data-cart-detail-price="<?php echo $cd['cdPrice']; ?>"
+                                            data-cart-detail-index="<?php echo $index; ?>"
+                                            quantity1="<?php echo $cd['slP']; ?>">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm text-center border-0"
-                                        value="<?php echo $cd['quantity']; ?>"
-                                        data-cart-detail-id="<?php echo $cd['id']; ?>"
-                                        data-cart-detail-price="<?php echo $cd['cdPrice']; ?>"
-                                        data-cart-detail-index="<?php echo $index; ?>"
-                                        quantity1="<?php echo $cd['slP']; ?>">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                                    <?php } else { ?>
+                                        <p class="mt-4 mb-0">
+                                            <span class="badge bg-danger">Hết hàng</span>
+                                        </p>
+                                    <?php } ?>
                             </td>
 
                             <td>
