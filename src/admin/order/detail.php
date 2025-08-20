@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
     <title>Dashboard</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,9 +23,9 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Quản lí đơn đặt hàng</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/admin/dashboard/show.php">Trang Chủ</a>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/dashboard/show.php">Trang Chủ</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/admin/order/show.php">Danh sách</a>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/order/show.php">Danh sách</a>
                         </li>
                         <li class="breadcrumb-item active">Đơn đặt hàng</li>
                     </ol>
@@ -105,7 +101,7 @@
                                         <!-- Previous Page Link -->
                                         <li class="page-item <?php echo ($nowPage == 1) ? 'disabled' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VegetableWeb/src/admin/order/detail.php?id=<?php echo $id; ?>&page=<?php echo $nowPage - 1; ?>"
+                                                href="/VitaFruit/src/admin/order/detail.php?id=<?php echo $id; ?>&page=<?php echo $nowPage - 1; ?>"
                                                 aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
@@ -116,14 +112,14 @@
                                         <?php for ($i = 1; $i <= $sumpage; $i++): ?>
                                         <li class="page-item <?php echo ($i == $nowPage) ? 'active' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VegetableWeb/src/admin/order/detail.php?id=<?php echo $id; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                                href="/VitaFruit/src/admin/order/detail.php?id=<?php echo $id; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
                                         </li>
                                         <?php endfor; ?>
 
                                         <!-- Next Page Link -->
                                         <li class="page-item <?php echo ($nowPage == $sumpage) ? 'disabled' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VegetableWeb/src/admin/order/detail.php?id=<?php echo $id; ?>&page=<?php echo $nowPage + 1; ?>"
+                                                href="/VitaFruit/src/admin/order/detail.php?id=<?php echo $id; ?>&page=<?php echo $nowPage + 1; ?>"
                                                 aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                             </a>

@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-    <meta name="author" content="Hỏi Dân IT" />
     <title>Tạo mới sản phẩm</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -40,7 +36,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Sản phẩm</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/admin/product/show.php?page=1">Trang
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/product/show.php?page=1">Trang
                                 chủ</a></li>
                         <li class="breadcrumb-item active">Sản phẩm</li>
                     </ol>
@@ -164,7 +160,7 @@
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $code = connect();
                 $file = time().".jpg";
-                $tenFile = "C:/xampp/htdocs/VegetableWeb/img/product/".$file;
+                $tenFile = "C:/xampp/htdocs/VitaFruit/img/product/".$file;
                 $result = move_uploaded_file($_FILES['MinhTriFile']['tmp_name'], $tenFile);
                 $query =  "INSERT INTO product (name, price, details_desc, short_desc, factory, quantity, sold, image, category )
                     VALUES ('$name', $price, '$details_desc', '$short_desc', '$factory', $quantity, 0, '$file', '$category')";
@@ -172,7 +168,7 @@
                 mysqli_close($code);
                 if ($kq) {
                     echo '<script type="text/javascript">
-                            window.location.href = "/VegetableWeb/src/admin/product/show.php?page=1";
+                            window.location.href = "/VitaFruit/src/admin/product/show.php?page=1";
                           </script>';
                     exit();
                 } 

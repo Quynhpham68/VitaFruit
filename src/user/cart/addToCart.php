@@ -31,7 +31,7 @@
             // Kiểm tra hết hàng
             if ($price['quantity'] <= 0) {
                 mysqli_close($code);
-                echo "<script>alert('Sản phẩm đã hết hàng, không thể thêm vào giỏ!'); window.location='/VegetableWeb/src/user/shop.php';</script>";
+                echo "<script>alert('Sản phẩm đã hết hàng, không thể thêm vào giỏ!'); window.location='/VitaFruit/src/user/shop.php';</script>";
                 exit;
             }
             if (mysqli_num_rows($kq) == 0)
@@ -56,12 +56,12 @@
                 mysqli_query($code, $query);
             }
         mysqli_close($code);
-        header('Location: /VegetableWeb/src/user/cart/show.php');
+        header('Location: /VitaFruit/src/user/cart/show.php');
         exit;
     }
     else
     {
-        header('Location: /VegetableWeb/src/user/index.php');
+        header('Location: /VitaFruit/src/user/index.php');
         exit;
     }
     

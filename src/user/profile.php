@@ -4,10 +4,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
     <title>Cập nhật người dùng</title>
     <link href="../admin/resources/css/styles.css" rel="stylesheet" />
     <?php
@@ -64,17 +60,17 @@
             if(empty($error))
             {
                 $file = "";
-                if (isset($_FILES['MinhTriFile']['tmp_name']) && !empty($_FILES['MinhTriFile']['tmp_name'])) {
+                if (isset($_FILES['MinhTriFile']['tmp_name']) && !empty($_FILES['DiemQuynhFile']['tmp_name'])) {
                     $file = time() . ".jpg";
-                    $tenFile = "C:/xampp/htdocs/VegetableWeb/img/avatar/" . $file;
-                    move_uploaded_file($_FILES['MinhTriFile']['tmp_name'], $tenFile);
+                    $tenFile = "C:/xampp/htdocs/VitaFruit/img/avatar/" . $file;
+                    move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 } else {
                     $file = $image;
                 }
                 $query = "UPDATE user SET email = '$email', name = '$fullname', phone = '$phone', image = '$file' WHERE id = '$id'";
                 if (update($query)) {
                     echo '<script type="text/javascript">
-                            window.location.href = "/VegetableWeb/src/user/index.php";
+                            window.location.href = "/VitaFruit/src/user/index.php";
                           </script>';
                     exit();
                 } else {
@@ -93,7 +89,7 @@
         const tmp = "<?php echo $image; ?>";
 
         if (tmp) {
-            const defaultImagePath = "/VegetableWeb/img/avatar/" + tmp;
+            const defaultImagePath = "/VitaFruit/img/avatar/" + tmp;
             $("#avatarPreview").attr("src", defaultImagePath);
             $("#avatarPreview").css({
                 "display": "block"

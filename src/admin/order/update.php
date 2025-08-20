@@ -9,7 +9,7 @@
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
         $query = "UPDATE orders SET status = 'Đã giao'  WHERE id =" .$id;
         update($query);
-        header('Location: /VegetableWeb/src/admin/order/show.php?page='.$page);
+        header('Location: /VitaFruit/src/admin/order/show.php?page='.$page);
         exit;
     }
 

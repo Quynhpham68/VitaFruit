@@ -76,7 +76,7 @@
                     <div>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/VegetableWeb/src/user/index.php">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/VitaFruit/src/user/index.php">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Chi Tiết Sản Phẩm</li>
                             </ol>
                         </nav>
@@ -99,7 +99,7 @@
                             <div class="col-lg-6">
                                 <div class="border rounded">
                                     <a href="#">
-                                        <img src="/VegetableWeb/img/product/<?php echo $product['image']?>"
+                                        <img src="/VitaFruit/img/product/<?php echo $product['image']?>"
                                             class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
@@ -171,7 +171,7 @@
                                 ?>
                                 </div>
                                 <p class="mb-3"><?php echo $product['short_desc'] ?></p>
-                                <form action="/VegetableWeb/src/user/cart/addToCart.php" method="post">
+                                <form action="/VitaFruit/src/user/cart/addToCart.php" method="post">
                                     <input type="hidden" name="idProduct" value="<?php echo $id?>" />
                                     <button type="submit"
                                         class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
@@ -219,7 +219,7 @@
                                             {
                                     ?>
                                         <div class="d-flex">
-                                            <img src="/VegetableWeb/img/avatar/<?php echo $review['image']?>"
+                                            <img src="/VitaFruit/img/avatar/<?php echo $review['image']?>"
                                                 class="img-fluid rounded-circle p-3"
                                                 style="width: 100px; height: 100px;" alt="">
                                             <div class="">

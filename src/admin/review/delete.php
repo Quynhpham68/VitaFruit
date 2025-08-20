@@ -2,11 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
+    <meta charset="utf-8" />    
     <title>Xóa đánh giá</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
 
@@ -28,7 +24,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Quản lí đánh giá</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/admin/review/show.php?page=1">Trang
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/review/show.php?page=1">Trang
                                 chủ</a></li>
                         <li class="breadcrumb-item active">Đánh giá</li>
                     </ol>
@@ -60,7 +56,7 @@
                                             $query = "DELETE FROM review WHERE id = $id";
                                             delete($query);
                                             echo '<script type="text/javascript">
-                                                    window.location.href = "/VegetableWeb/src/admin/review/show.php?page=1";
+                                                    window.location.href = "/VitaFruit/src/admin/review/show.php?page=1";
                                                 </script>';
                                             exit();
                                         }

@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
   <title>Đăng nhập</title>
   <link href="styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -13,7 +9,7 @@
   <?php
     session_start();
     if (isset($_SESSION['user'])) {
-        header('Location: /VegetableWeb/src/user/index.php');
+        header('Location: /VitaFruit/src/user/index.php');
         exit;
     }
     $cookie_name = 'remember_user';
@@ -22,7 +18,7 @@
         if (isset($arr['usr'])) {
             $usr = $arr['usr'];
             $_SESSION['user'] = $usr;
-            header('Location: /VegetableWeb/src/user/index.php');
+            header('Location: /VitaFruit/src/user/index.php');
             exit;
         } 
     }
@@ -52,7 +48,7 @@
                         $cookie_time = (3600 * 24 * 30);
                         setcookie($cookie_name, 'usr=' . $username , time() + $cookie_time, '/');
                     }
-                    header('Location: /VegetableWeb/src/user/index.php');
+                    header('Location: /VitaFruit/src/user/index.php');
                     exit;
                 } else {
                     $error['password'] = 'Password không đúng';
@@ -167,7 +163,7 @@
                   </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                  <div class="small"><a href="/VegetableWeb/src/auth/register.php">Bạn chưa có tài khoản? Đăng kí!</a></div>
+                  <div class="small"><a href="/VitaFruit/src/auth/register.php">Bạn chưa có tài khoản? Đăng kí!</a></div>
                 </div>
               </div>
             </div>

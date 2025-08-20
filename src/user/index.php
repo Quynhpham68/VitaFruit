@@ -121,7 +121,7 @@ function format_price($price) {
                                         $qr = mysqli_query($code, "SELECT * FROM product limit 8");
 
                                         while ($row = mysqli_fetch_assoc($qr)) {
-                                            $imagePath = "/VegetableWeb/img/product/" . $row['image'];
+                                            $imagePath = "/VitaFruit/img/product/" . $row['image'];
                                             ?>
                                     <div class="col-md-6 col-lg-4 col-xl-3 d-flex">
                                         <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="rounded position-relative fruite-item d-flex flex-column w-100 h-100">
@@ -173,7 +173,7 @@ function format_price($price) {
                                         $qr = mysqli_query($code, "SELECT * FROM product WHERE category = 'Rau Củ' LIMIT 8");
 
                                         while ($row = mysqli_fetch_assoc($qr)) {
-                                            $imagePath = "/VegetableWeb/img/product/" . $row['image'];
+                                            $imagePath = "/VitaFruit/img/product/" . $row['image'];
                                             ?>
                                     <div class="col-md-6 col-lg-4 col-xl-3 d-flex">
                                         <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="rounded position-relative fruite-item d-flex flex-column w-100 h-100">
@@ -226,7 +226,7 @@ function format_price($price) {
                                         $qr = mysqli_query($code, "SELECT * FROM product WHERE category = 'Hoa quả' LIMIT 8");
 
                                         while ($row = mysqli_fetch_assoc($qr)) {
-                                            $imagePath = "/VegetableWeb/img/product/" . $row['image'];
+                                            $imagePath = "/VitaFruit/img/product/" . $row['image'];
                                             ?>
                                     <div class="col-md-6 col-lg-4 col-xl-3 d-flex">
                                         <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="rounded position-relative fruite-item d-flex flex-column w-100 h-100">

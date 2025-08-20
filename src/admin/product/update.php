@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
     <title>Cập nhật người dùng</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
 
@@ -66,7 +62,7 @@
                 $file = "";
                 if (isset($_FILES['DiemQuynhFile']['tmp_name']) && !empty($_FILES['DiemQuynhFile']['tmp_name'])) {
                     $file = time() . ".jpg";
-                    $tenFile = "C:/xampp/htdocs/VegetableWeb/img/product/" . $file;
+                    $tenFile = "C:/xampp/htdocs/VitaFruit/img/product/" . $file;
                     move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 } else {
                     $file = $image;
@@ -84,7 +80,7 @@
                     WHERE id = '$id'";
                 if (update($query)) {
                     echo '<script type="text/javascript">
-                            window.location.href = "/VegetableWeb/src/admin/product/show.php?page=1";
+                            window.location.href = "/VitaFruit/src/admin/product/show.php?page=1";
                         </script>';
                     exit();
                 } else {
@@ -99,7 +95,7 @@
         const tmp = "<?php echo $image; ?>";
 
         if (tmp) {
-            const defaultImagePath = "/VegetableWeb/img/product/" + tmp;
+            const defaultImagePath = "/VitaFruit/img/product/" + tmp;
             $("#avatarPreview").attr("src", defaultImagePath);
             $("#avatarPreview").css({
                 "display": "block"

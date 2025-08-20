@@ -11,11 +11,7 @@ role($username);
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
+    <meta charset="utf-8" />    
     <title>Quản lý Liên hệ</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -30,7 +26,7 @@ role($username);
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Liên hệ</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/admin/dashboard/show.php">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/dashboard/show.php">Trang chủ</a></li>
                         <li class="breadcrumb-item active">Liên hệ</li>
                     </ol>
 
@@ -93,17 +89,17 @@ role($username);
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination justify-content-center">
                                             <li class="page-item <?php echo ($nowPage == 1) ? 'disabled' : ''; ?>">
-                                                <a class="page-link" href="/VegetableWeb/src/admin/contact/show.php?page=<?php echo $nowPage - 1; ?>" aria-label="Previous">
+                                                <a class="page-link" href="/VitaFruit/src/admin/contact/show.php?page=<?php echo $nowPage - 1; ?>" aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                             <?php for ($i = 1; $i <= $total_rows; $i++): ?>
                                                 <li class="page-item <?php echo ($i == $nowPage) ? 'active' : ''; ?>">
-                                                    <a class="page-link" href="/VegetableWeb/src/admin/contact/show.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                                    <a class="page-link" href="/VitaFruit/src/admin/contact/show.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                                                 </li>
                                             <?php endfor; ?>
                                             <li class="page-item <?php echo ($nowPage == $total_rows) ? 'disabled' : ''; ?>">
-                                                <a class="page-link" href="/VegetableWeb/src/admin/contact/show.php?page=<?php echo $nowPage + 1; ?>" aria-label="Next">
+                                                <a class="page-link" href="/VitaFruit/src/admin/contact/show.php?page=<?php echo $nowPage + 1; ?>" aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>

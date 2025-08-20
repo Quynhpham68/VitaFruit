@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
     <title>Dashboard</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,7 +23,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Quản lí người dùng</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/admin/dashboard/show.php">Trang Chủ</a>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/dashboard/show.php">Trang Chủ</a>
                         </li>
                         <li class="breadcrumb-item active">Người dùng</li>
                     </ol>
@@ -36,7 +32,7 @@
                             <div class="col-12 mx-auto">
                                 <div class="d-flex justify-content-between">
                                     <h3>BẢNG NGƯỜI DÙNG</h3>
-                                    <a href="/VegetableWeb/src/admin/user/create.php" class="btn btn-primary">Tạo
+                                    <a href="/VitaFruit/src/admin/user/create.php" class="btn btn-primary">Tạo
                                         người dùng mới</a>
                                 </div>
 
@@ -67,9 +63,9 @@
                                                     <td>{$user['name']}</td>
                                                     <td>{$user['phone']}</td>
                                                     <td>
-                                                        <a href='/VegetableWeb/src/admin/user/detail.php?id={$user['id']}' class='btn btn-success'>Xem chi tiết</a>
-                                                        <a href='/VegetableWeb/src/admin/user/update.php?id={$user['id']}' class='btn btn-warning mx-2'>Cập nhật</a>
-                                                        <a href='/VegetableWeb/src/admin/user/delete.php?id={$user['id']}' class='btn btn-danger'>Xóa</a>
+                                                        <a href='/VitaFruit/src/admin/user/detail.php?id={$user['id']}' class='btn btn-success'>Xem chi tiết</a>
+                                                        <a href='/VitaFruit/src/admin/user/update.php?id={$user['id']}' class='btn btn-warning mx-2'>Cập nhật</a>
+                                                        <a href='/VitaFruit/src/admin/user/delete.php?id={$user['id']}' class='btn btn-danger'>Xóa</a>
                                                     </td>
                                                 </tr>";
                                             }
@@ -94,7 +90,7 @@
                                         <!-- Previous Page Link -->
                                         <li class="page-item <?php echo ($nowPage == 1) ? 'disabled' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VegetableWeb/src/admin/user/show.php?page=<?php echo $nowPage - 1; ?>"
+                                                href="/VitaFruit/src/admin/user/show.php?page=<?php echo $nowPage - 1; ?>"
                                                 aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
@@ -104,14 +100,14 @@
                                         <?php for ($i = 1; $i <= $sumpage; $i++): ?>
                                         <li class="page-item <?php echo ($i == $nowPage) ? 'active' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VegetableWeb/src/admin/user/show.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                                href="/VitaFruit/src/admin/user/show.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                                         </li>
                                         <?php endfor; ?>
 
                                         <!-- Next Page Link -->
                                         <li class="page-item <?php echo ($nowPage == $sumpage) ? 'disabled' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VegetableWeb/src/admin/user/show.php?page=<?php echo $nowPage + 1; ?>"
+                                                href="/VitaFruit/src/admin/user/show.php?page=<?php echo $nowPage + 1; ?>"
                                                 aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                             </a>

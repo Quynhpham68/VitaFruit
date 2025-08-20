@@ -136,7 +136,7 @@ if (floor($price) == $price) {
                                     $qr = mysqli_query($code, "SELECT * FROM product WHERE name LIKE '%$search%'");
 
                                     while ($row = mysqli_fetch_assoc($qr)) {
-                                        $imagePath = "/VegetableWeb/img/product/" . $row['image'];
+                                        $imagePath = "/VitaFruit/img/product/" . $row['image'];
                                         ?>
                         <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="col-md-6 col-lg-4 col-xl-3"
                             style="float: left !important;">
@@ -192,7 +192,7 @@ if (floor($price) == $price) {
                                     }
                                     $qr = mysqli_query($code, "SELECT * FROM product $orderBy");
                                     while ($row = mysqli_fetch_assoc($qr)) {
-                                        $imagePath = "/VegetableWeb/img/product/" . $row['image'];
+                                        $imagePath = "/VitaFruit/img/product/" . $row['image'];
                                         ?>
                         <a href="./shop-detail.php?id=<?php echo $row['id']; ?>" class="col-md-6 col-lg-4 col-xl-3">
                             <div class="rounded position-relative fruite-item">

@@ -71,7 +71,7 @@
             <div class="mb-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/user/index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/user/index.php">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Thông tin thanh toán</li>
                     </ol>
                 </nav>
@@ -120,7 +120,7 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="/VegetableWeb/img/product/<?php echo $cd['image']; ?>"
+                                    <img src="/VitaFruit/img/product/<?php echo $cd['image']; ?>"
                                         class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
                                 </div>
                             </th>
@@ -168,7 +168,7 @@
                 if($tmp > 0)
                 {
             ?>
-            <form action="/VegetableWeb/src/user/cart/Ordersuccess.php" method="post">
+            <form action="/VitaFruit/src/user/cart/Ordersuccess.php" method="post">
                 <div class="mt-5 row g-4 justify-content-start">
                     <div class="col-12 col-md-6">
                         <div class="p-4 ">
@@ -190,7 +190,7 @@
                                 <input type="hidden" name="cartId" value="<?php echo $idCart?>">
                                 <div class="mt-4">
                                     <i class="fas fa-arrow-left"></i>
-                                    <a href="/VegetableWeb/src/user/cart/show.php">Quay lại giỏ hàng</a>
+                                    <a href="/VitaFruit/src/user/cart/show.php">Quay lại giỏ hàng</a>
                                 </div>
                             </div>
                         </div>

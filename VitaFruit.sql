@@ -1,4 +1,4 @@
-CREATE DATABASE vegetable;
+CREATE DATABASE vitafruit;
 CREATE TABLE `role` (
   `id` int NOT NULL AUTO_INCREMENT,
   `quyenHan` varchar(255) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`roleID`) REFERENCES `role` (`id`)
 );
 INSERT INTO `user` (id, email, password, name, phone, image, roleID) 
-VALUES (1, 'admin@gmail.com', '$2y$10$1FDxGVWLdnjhepPs0hrN8esbEOkeGX9Xqu/2E5s5nBOKULLkg4uXG', 'Hoàng Minh Trí', '32423423423', '1732003800.jpg', 2);
+VALUES (1, 'admin@gmail.com', '$2y$10$1FDxGVWLdnjhepPs0hrN8esbEOkeGX9Xqu/2E5s5nBOKULLkg4uXG', 'Phạm Thị Diễm Quỳnh', '32423423423', '1732003800.jpg', 2);
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,

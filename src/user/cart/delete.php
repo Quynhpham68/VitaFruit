@@ -22,12 +22,12 @@
             $kq = mysqli_query($code, $query);
         }
         mysqli_close($code);
-        header('Location: /VegetableWeb/src/user/cart/show.php');
+        header('Location: /VitaFruit/src/user/cart/show.php');
         exit;
     }
     else
     {
-        header('Location: /VegetableWeb/src/user/index.php');
+        header('Location: /VitaFruit/src/user/index.php');
         exit;
     }
 ?>

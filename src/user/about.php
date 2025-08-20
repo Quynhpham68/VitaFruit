@@ -38,7 +38,7 @@
                 </p>   
             </div>
             <div class="col-md-6">
-                <img src="/VegetableWeb/src/user/img/image1.jpg" alt="Giới thiệu VitaFruit" class="img-fluid rounded shadow">
+                <img src="/VitaFruit/src/user/img/image1.jpg" alt="Giới thiệu VitaFruit" class="img-fluid rounded shadow">
             </div>
         </div>
     </div>

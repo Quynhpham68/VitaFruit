@@ -2,7 +2,7 @@
     function connect()
     {
         $code = @mysqli_connect("localhost", "root", "");
-        mysqli_select_db($code, "vegetable3");
+        mysqli_select_db($code, "vitafruit");
         return $code;
     }
 
@@ -75,7 +75,7 @@
         mysqli_close($code);
         if($role == 1)
         {
-            header('Location: /VegetableWeb/src/admin/deny.php');
+            header('Location: /VitaFruit/src/admin/deny.php');
             exit;
         }
     }

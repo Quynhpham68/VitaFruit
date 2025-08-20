@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
     <title>Detail User</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <?php
@@ -57,7 +53,7 @@
                                         <li class="list-group-item">
                                             Ảnh:
                                             <?php 
-                                                $image = "/VegetableWeb/img/avatar/" . $row['image'];  
+                                                $image = "/VitaFruit/img/avatar/" . $row['image'];  
                                                 ?>
                                             <img src="<?php echo $image; ?>" alt="Chưa có ảnh"
                                                 style="max-height: 250px;">
@@ -65,7 +61,7 @@
                                     </ul>
                                 </div>
 
-                                <a href="/VegetableWeb/src/admin/user/show.php?page=1" class="btn btn-success mt-3">Trở
+                                <a href="/VitaFruit/src/admin/user/show.php?page=1" class="btn btn-success mt-3">Trở
                                     về</a>
 
                             </div>

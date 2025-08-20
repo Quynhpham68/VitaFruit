@@ -5,7 +5,7 @@
             <div class="row g-4">
                 <div class="col-lg-6">
                     <a href="#">
-                        <h1 class="text-primary mb-0">FreshMarket</h1>
+                        <h1 class="text-primary mb-0">VitaFruit</h1>
                         <p class="text-secondary mb-0">Rau củ sạch – Tươi mỗi ngày</p>
                     </a>
                 </div>

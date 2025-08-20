@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <title>Đăng kí</title>
     <link href="styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -211,7 +207,7 @@
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="/VegetableWeb/src/auth/login.php">Bạn đã có tài khoản?
+                                    <div class="small"><a href="/VitaFruit/src/auth/login.php">Bạn đã có tài khoản?
                                             Tới đăng nhập</a></div>
                                 </div>
                             </div>
@@ -230,7 +226,7 @@
                 mysqli_close($code);
                 if ($kq) {
                     echo '<script type="text/javascript">
-                            window.location.href = "/VegetableWeb/src/auth/login.php";
+                            window.location.href = "/VitaFruit/src/auth/login.php";
                           </script>';
                     exit();
                 } else {

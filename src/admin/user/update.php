@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
     <title>Cập nhật người dùng</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <?php
@@ -63,15 +59,15 @@
                 $file = "";
                 if (isset($_FILES['MinhTriFile']['tmp_name']) && !empty($_FILES['MinhTriFile']['tmp_name'])) {
                     $file = time() . ".jpg";
-                    $tenFile = "C:/xampp/htdocs/VegetableWeb/img/avatar/" . $file;
-                    move_uploaded_file($_FILES['MinhTriFile']['tmp_name'], $tenFile);
+                    $tenFile = "C:/xampp/htdocs/VitaFruit/img/avatar/" . $file;
+                    move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 } else {
                     $file = $image;
                 }
                 $query = "UPDATE user SET email = '$email', name = '$fullname', phone = '$phone', image = '$file' WHERE id = '$id'";
                 if (update($query)) {
                     echo '<script type="text/javascript">
-                            window.location.href = "/VegetableWeb/src/admin/user/show.php?page=1";
+                            window.location.href = "/VitaFruit/src/admin/user/show.php?page=1";
                           </script>';
                     exit();
                 } else {
@@ -155,7 +151,7 @@
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Ảnh đại diện:</label>
                                         <input class="form-control" type="file" id="avatarFile"
-                                            accept=".png, .jpg, .jpeg" name="MinhTriFile" />
+                                            accept=".png, .jpg, .jpeg" name="DiemQuynhFile" />
                                     </div>
 
                                     <div class="col-12 mb-3">

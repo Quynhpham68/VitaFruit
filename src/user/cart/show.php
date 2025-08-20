@@ -51,7 +51,7 @@
             <div class="mb-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/user/index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/user/index.php">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Chi Tiết Giỏ Hàng</li>
                     </ol>
                 </nav>
@@ -115,7 +115,7 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="/VegetableWeb/img/product/<?php echo $cd['image']; ?>"
+                                    <img src="/VitaFruit/img/product/<?php echo $cd['image']; ?>"
                                         class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
                                 </div>
                             </th>
@@ -176,7 +176,7 @@
 
                             <td>
                                 <form method="post"
-                                    action="/VegetableWeb/src/user/cart/delete.php?cartId=<?php echo $cartId?>&cdId=<?php echo $cd['id']; ?>">
+                                    action="/VitaFruit/src/user/cart/delete.php?cartId=<?php echo $cartId?>&cdId=<?php echo $cd['id']; ?>">
                                     <button class="btn btn-md rounded-circle bg-light border mt-4">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
@@ -219,7 +219,7 @@
                                     <?php echo number_format($totalPrice, 0, ',', '.'); ?> đ
                                 </p>
                             </div>
-                            <form action="/VegetableWeb/src/user/cart/checkout.php?index=<?php echo $index?>"
+                            <form action="/VitaFruit/src/user/cart/checkout.php?index=<?php echo $index?>"
                                 method="post">
                                 <div>
                                     <?php

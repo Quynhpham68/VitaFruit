@@ -52,7 +52,7 @@
             <div class="mb-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/VegetableWeb/src/user/index.php">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="/VitaFruit/src/user/index.php">Trang Chủ</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Lịch sử mua hàng</li>
                     </ol>
                 </nav>
@@ -108,7 +108,7 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="/VegetableWeb/img/product/<?php echo $od['image']; ?>"
+                                    <img src="/VitaFruit/img/product/<?php echo $od['image']; ?>"
                                         class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
                                 </div>
                             </th>

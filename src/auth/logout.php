@@ -13,7 +13,7 @@ if (isset($_POST['logout'])) {
     }
 
     setcookie(session_name(), '', time() - 3600000, '/');
-    header('Location: /VegetableWeb/src/auth/login.php');
+    header('Location: /VitaFruit/src/auth/login.php');
     exit;
 }
 ?>

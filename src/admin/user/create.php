@@ -2,11 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="MT" />
-    <meta name="author" content="MT" />
+    <meta charset="utf-8" />    
     <title>Tạo mới người dùng</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
 
@@ -165,7 +161,7 @@
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
                 $code = connect();
                 $file = time().".jpg";
-                $tenFile = "C:/xampp/htdocs/VegetableWeb/img/avatar/".$file;
+                $tenFile = "C:/xampp/htdocs/VitaFruit/img/avatar/".$file;
                 $result = move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 $password = password_hash($password, PASSWORD_DEFAULT);
                 $query =  "INSERT INTO user (email, name, password, phone, image, roleID )
@@ -174,7 +170,7 @@
                 mysqli_close($code);
                 if ($kq) {
                     echo '<script type="text/javascript">
-                            window.location.href = "/VegetableWeb/src/admin/user/show.php?page=1";
+                            window.location.href = "/VitaFruit/src/admin/user/show.php?page=1";
                           </script>';
                     exit();
                 } else {

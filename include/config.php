@@ -10,7 +10,7 @@
                 } 
             }
             else{
-                header('Location: /VegetableWeb/src/auth/login.php');
+                header('Location: /VitaFruit/src/auth/login.php');
                 exit;
             }
         }

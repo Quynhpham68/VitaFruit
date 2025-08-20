@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="col-12 mt-5">
-                <a href="/VegetableWeb/src/user/index.php" class="btn btn-success">Trở về</a>
+                <a href="/VitaFruit/src/user/index.php" class="btn btn-success">Trở về</a>
             </div>
         </div>
     </div>
