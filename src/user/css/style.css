@@ -25,6 +25,7 @@
     z-index: 99;
 }
 /*** Spinner End ***/
+
 /* Header start */
 .price {
     margin: 0 auto;
@@ -123,6 +124,7 @@
     height: 100px;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
+
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active,
@@ -656,7 +658,7 @@ p {
 /* Breadcrumb */
 .breadcrumb a {
     font-family: 'Open Sans', sans-serif;
-    color: #d63737;
+    color: #7DB300;
     text-decoration: none;
 }
 .breadcrumb a:hover {
@@ -683,8 +685,9 @@ span, .badge {
     letter-spacing: 0.5px;
 }
 .nav-link.active {
-    color: #d63737 !important;
+    color: #7DB300 !important;
 }
+
 
 /* Footer */
 .footer p, .footer a {
@@ -695,4 +698,14 @@ span, .badge {
 .footer h1, .footer h2 {
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
+    
 }
+
+.product-desc {
+    color: #7DB300; /* xanh lá tươi */
+    font-family: 'Open Sans', sans-serif; /* hoặc font bạn muốn */
+    font-size: 15px;
+    font-weight: 500;
+}
+
+

@@ -71,10 +71,10 @@ function format_price($price) {
 
    <!-- Panel Start -->
     <div class="col-md-12 col-lg-12">
-        <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 85px;"> <!-- giảm từ 95px xuống 50px -->
+        <div class="img_container" style="display: flex; justify-content: center; position: relative; margin-top: 0px;"> <!-- giảm từ 95px xuống 50px -->
 
             <img src="./img/trang chủ.png" alt=""
-                style="margin-top: 60px; max-width: 100%; max-height: 80vh; height: auto; width: auto; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
+                style="margin-top: 5px; max-width: 100%; max-height: 80vh; height: auto; width: auto; object-fit: contain; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.05);">
 
         <button class="shop-now-btn" onclick="document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });">
         SHOP NOW

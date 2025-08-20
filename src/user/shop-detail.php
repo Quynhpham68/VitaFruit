@@ -43,6 +43,7 @@
 
         <?php
         session_start();
+        $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
         include_once 'layout/header.php';
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {

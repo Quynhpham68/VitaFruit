@@ -1,13 +1,15 @@
+/*#7DB300  #5a8a00; /* tone đậm hơn */
 /* Google Fonts - Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
+
 #chatbot-toggler {
     position: fixed;
-    bottom: 140px;
+    bottom: 130px;
     right: 35px;
     border: none;
-    height: 50px;
-    width: 50px;
+    height: 48px;
+    width: 48px;
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -18,13 +20,24 @@
     transition: all 0.2s ease;
 }
 
-#chatbot-toggler:hover,
-#chatbot-toggler:active {
-    transform: scale(1.05); /
-}
-
 body.show-chatbot #chatbot-toggler {
     transform: rotate(90deg);
+}
+
+#chatbot-toggler .close-icon {
+    display: none; /* icon close mặc định ẩn */
+}
+
+#chatbot-toggler .chat-icon {
+    display: block; /* icon chat mặc định */
+}
+
+body.show-chatbot #chatbot-toggler .chat-icon {
+    display: none; /* khi mở chat, ẩn icon chat */
+}
+
+body.show-chatbot #chatbot-toggler .close-icon {
+    display: block; /* hiện icon close */
 }
 
 #chatbot-toggler span {
@@ -44,8 +57,9 @@ body.show-chatbot #chatbot-toggler span:last-child {
 .chatbot-popup {
     position: fixed;
     right: 35px;
-    bottom: 190px;
-    width: 350px;
+    bottom: 160px;
+    width: 340px;
+    height: 460px;
     overflow: hidden;
     background: #fff;
     border-radius: 15px;
@@ -67,10 +81,9 @@ body.show-chatbot .chatbot-popup {
 .chat-header {
     display: flex;
     align-items: center;
-    padding: 15px 20px;
+    padding: 15px 22px;
     background: #7DB300;
     justify-content: space-between;
-    height: 60px;
 }
 
 .chat-header .header-info {
@@ -80,7 +93,7 @@ body.show-chatbot .chatbot-popup {
 }
 
 .header-info .chatbot-logo {
-    width: 30px;
+    width: 35px;
     height: 35px;
     padding: 6px;
     fill: #7DB300;
@@ -97,18 +110,27 @@ body.show-chatbot .chatbot-popup {
 }
 
 .chat-header #close-chatbot {
-    border: none;
+    position: absolute;
+    top: 10px;     /* xuống bên trong header */
+    right: 10px;   /* cách mép phải */
+    height: 35px;
+    width: 35px;
+    bottom: 150px; 
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    background: #7DB300;
     color: #fff;
-    height: 30px;
-    width: 40px;
-    font-size: 1.9rem;
-    margin-right: -10px;
-    padding-top: 2px;
-    cursor: pointer;
     border-radius: 50%;
-    background: none;
-    transition: 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
+
 
 .chat-header #close-chatbot:hover {
     background: #7DB300;
@@ -118,7 +140,7 @@ body.show-chatbot .chatbot-popup {
     padding: 25px 22px;
     gap: 20px;
     display: flex;
-    height: 320px;
+    height: 460px;
     overflow-y: auto;
     margin-bottom: 82px;
     flex-direction: column;
