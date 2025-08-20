@@ -206,7 +206,7 @@ if (floor($price) == $price) {
                                 </div>
                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom fruite-content">
                                     <h4 class="text-center"><?php echo $row['name']; ?></h4>
-                                    <p><?php echo $row['short_desc']; ?></p>
+                                    <p class="text-center"><?php echo $row['short_desc']; ?></p>
                                     <div class="text-center">                                            
                                         <?php
                                             $price = $row['price'];
