@@ -193,13 +193,14 @@ function format_price($price) {
 
                                                         if ($discount > 0) {
                                                             $discount_price = $price * (1 - $discount / 100);
-                                                            echo "<p class='text-dark fw-bold mb-1' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
-                                                            echo "<p class='mb-0'>
-                                                                    <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
-                                                                    <small class='text-danger'>Giảm: " . $discount . "%</small>
-                                                                </p>";
+                                                            echo "<p class='text-dark fw-bold mb-1' style='font-size:1.5rem;'>" . format_price($discount_price) . " / kg</p>";
+                                                            echo "<p class='mb-0 text-center'>
+                                                                        <small class='text-muted text-decoration-line-through me-3 fw-bold'>" . format_price($price) . "</small>
+                                                                        <small class='text-danger fw-bold'>Giảm: " . $discount . "%</small>
+                                                                    </p>";
+
                                                         } else {
-                                                            echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
+                                                            echo "<p class='text-dark fw-bold mb-0 price' style='font-size:1.5rem;'>" . format_price($price) . " / kg</p>";
                                                         }
                                                     ?>
                                                 </div>

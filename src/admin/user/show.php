@@ -34,10 +34,28 @@
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-12 mx-auto">
-                                <div class="d-flex justify-content-between">
-                                    <h3>BẢNG NGƯỜI DÙNG</h3>
-                                    <a href="/VitaFruit/src/admin/user/create.php" class="btn btn-primary">Tạo
-                                        người dùng mới</a>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <!-- Thanh tìm kiếm -->
+                                    <form class="d-flex" method="GET" action="">
+                                        <input 
+                                            class="form-control me-2" 
+                                            type="search" 
+                                            name="keyword" 
+                                            placeholder="Tìm sản phẩm..." 
+                                            value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>"
+                                            id="searchInput"
+                                        >
+                                        <button class="btn btn-primary" type="submit">Tìm</button>
+                                    </form>
+
+                                    <script>
+                                    document.getElementById('searchInput').addEventListener('search', function () {
+                                        if (this.value === "") {
+                                            window.location.href = "show.php"; // trả về danh sách ban đầu
+                                        }
+                                    });
+                                    </script>
+                                    <a href="/VitaFruit/src/admin/user/create.php" class="btn btn-primary">Tạo người dùng mới</a>
                                 </div>
 
                                 <hr />
@@ -56,7 +74,25 @@
                                             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                             $page = max($page, 1);
                                             $offset = ($page - 1) * 6;
-                                            $query = "SELECT id, email, name, phone FROM user ORDER BY id LIMIT 6 OFFSET " . $offset ;
+                                            $search_raw = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+                                            $search = $search_raw !== '' ? addslashes($search_raw) : '';
+
+                                            if ($search !== '') {                                                
+                                                $query = "SELECT id, email, name, phone 
+                                                        FROM user 
+                                                        WHERE email LIKE '%$search%' OR name LIKE '%$search%' OR phone LIKE '%$search%' 
+                                                        ORDER BY id 
+                                                        LIMIT 6 OFFSET $offset";
+                                                $queryCount = "SELECT COUNT(*) AS total_rows 
+                                                            FROM user 
+                                                            WHERE email LIKE '%$search%' OR name LIKE '%$search%' OR phone LIKE '%$search%'";
+                                            } else {
+                                                $query = "SELECT id, email, name, phone 
+                                                        FROM user 
+                                                        ORDER BY id 
+                                                        LIMIT 6 OFFSET $offset";
+                                                $queryCount = "SELECT COUNT(*) AS total_rows FROM user";
+                                            }
                                             $kq = view($query);
                                             if ($kq && mysqli_num_rows($kq) > 0) {
                                             while ($user = mysqli_fetch_assoc($kq)) {

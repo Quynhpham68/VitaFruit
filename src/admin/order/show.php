@@ -16,6 +16,11 @@
         include_once '../../../include/database.php';
         $username = $_SESSION['user'];
         role($username);
+        $conn = connect();
+        // Lấy từ khóa tìm kiếm (nếu có)
+        $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+        // escape để tránh SQL Injection
+        $keyword = mysqli_real_escape_string($conn, $keyword);       
     ?>
 </head>
 
@@ -42,8 +47,27 @@
                                     $total = $doanhThu['total_price'];
                                     $total = round($total, 1);
                                 ?>
-                                <div class="d-flex justify-content-between">
-                                    <h3>BẢNG ĐƠN ĐẶT HÀNG</h3>
+                                   <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <!-- Thanh tìm kiếm -->
+                                    <form class="d-flex" method="GET" action="">
+                                        <input 
+                                            class="form-control me-2" 
+                                            type="search" 
+                                            name="keyword" 
+                                            placeholder="Tìm sản phẩm..." 
+                                            value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>"
+                                            id="searchInput"
+                                        >
+                                        <button class="btn btn-primary" type="submit">Tìm</button>
+                                    </form>
+
+                                    <script>
+                                    document.getElementById('searchInput').addEventListener('search', function () {
+                                        if (this.value === "") {
+                                            window.location.href = "show.php"; // trả về danh sách ban đầu
+                                        }
+                                    });
+                                    </script>
                                     <p class="btn btn-primary">Tổng doanh thu: <?php echo number_format($total, 0, '', '.'); ?> đ</p>
                                 </div>
                                 <hr />
@@ -65,7 +89,36 @@
                                             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                             $page = max($page, 1);
                                             $offset = ($page - 1) * 6;
-                                            $query = "SELECT o.id, u.name as 'nameOrder', o.name, o.address, o.phone, o.status FROM orders o join user u on o.userId = u.id ORDER BY id DESC LIMIT 6 OFFSET " . $offset ;
+                                            // Lấy từ khóa tìm kiếm
+                                            $keyword = addslashes($keyword);
+                                            if ($keyword !== '') {
+                                                $query = "SELECT o.id, u.name as 'nameOrder', o.name, o.address, o.phone, o.status 
+                                                        FROM orders o 
+                                                        JOIN user u ON o.userId = u.id 
+                                                        WHERE u.name LIKE '%$keyword%' 
+                                                            OR o.name LIKE '%$keyword%' 
+                                                            OR o.address LIKE '%$keyword%' 
+                                                            OR o.phone LIKE '%$keyword%'
+                                                        ORDER BY o.id DESC 
+                                                        LIMIT 6 OFFSET $offset";
+
+                                                $query1 = "SELECT COUNT(*) AS total_rows 
+                                                        FROM orders o 
+                                                        JOIN user u ON o.userId = u.id 
+                                                        WHERE u.name LIKE '%$keyword%' 
+                                                            OR o.name LIKE '%$keyword%' 
+                                                            OR o.address LIKE '%$keyword%' 
+                                                            OR o.phone LIKE '%$keyword%'";
+                                            } else {
+                                                $query = "SELECT o.id, u.name as 'nameOrder', o.name, o.address, o.phone, o.status 
+                                                        FROM orders o 
+                                                        JOIN user u ON o.userId = u.id 
+                                                        ORDER BY o.id DESC 
+                                                        LIMIT 6 OFFSET $offset";
+
+                                                $query1 = "SELECT COUNT(*) AS total_rows FROM orders";
+                                            }
+
                                             $kq = view($query);
                                             if ($kq && mysqli_num_rows($kq) > 0) {
                                                 while ($order = mysqli_fetch_assoc($kq)) {

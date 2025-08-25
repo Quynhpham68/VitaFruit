@@ -34,12 +34,33 @@
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-12 mx-auto">
-                                <div class="d-flex justify-content-between">
-                                    <h3>DANH SÁCH SẢN PHẨM ĐÃ DUYỆT</h3>
-                                    <a href="/VitaFruit/src/admin/product/create.php" class="btn btn-primary">Tạo
-                                        sản phẩm
-                                        mới</a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- Thanh tìm kiếm -->
+                                    <form class="d-flex" method="GET" action="">
+                                        <input 
+                                            class="form-control me-2" 
+                                            type="search" 
+                                            name="keyword" 
+                                            placeholder="Tìm sản phẩm..." 
+                                            value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>"
+                                            id="searchInput"
+                                        >
+                                        <button class="btn btn-primary" type="submit">Tìm</button>
+                                    </form>
+
+                                    <script>
+                                    document.getElementById('searchInput').addEventListener('search', function () {
+                                        if (this.value === "") {
+                                            window.location.href = "show.php"; // trả về danh sách ban đầu
+                                        }
+                                    });
+                                    </script>
+
+
+                                    <!-- Nút tạo sản phẩm -->
+                                    <a href="/VitaFruit/src/admin/product/create.php" class="btn btn-primary">Tạo sản phẩm mới</a>
                                 </div>
+
 
                                 <hr />
                                 <table class=" table table-bordered table-hover" style="text-align: center;">
@@ -62,8 +83,24 @@
                                             $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
                                             $page = max($page, 1);
                                             $offset = ($page - 1) * 6;
-                                            $query = "SELECT id, name, price, factory, quantity, sold, category, discount_percent FROM product ORDER BY id LIMIT 6 OFFSET " . $offset ;
+
+                                             // Lấy từ khóa tìm kiếm
+                                            $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+                                            $where = "";
+                                            if ($keyword !== "") {
+                                                $keyword_safe = addslashes($keyword);
+                                                $where = "WHERE name LIKE '%$keyword_safe%' OR factory LIKE '%$keyword_safe%'";
+                                            }
+
+
+                                            // Query sản phẩm
+                                            $query = "SELECT id, name, price, factory, quantity, sold, category, discount_percent 
+                                                    FROM product 
+                                                    $where
+                                                    ORDER BY id 
+                                                    LIMIT 6 OFFSET " . $offset;
                                             $kq = view($query);
+
                                             if ($kq && mysqli_num_rows($kq) > 0) {
                                             while ($product = mysqli_fetch_assoc($kq)) {
                                                 $discount_price = $product['price'] * (1 - $product['discount_percent'] / 100);
@@ -91,40 +128,44 @@
                                                 <td colspan='7'>Không có dữ liệu</td>
                                             </tr>";
                                             }
+                                            // Đếm tổng số sản phẩm cho phân trang
+                                            $query1 = "SELECT COUNT(*) AS total_rows FROM product $where";
+                                            $result = view($query1);
+                                            $row = mysqli_fetch_assoc($result);
+                                            $total_rows = $row['total_rows'] ?? 0;
+                                            $sumpage = ceil($total_rows / 6);
+                                            $nowPage = max(1, $page);
+
                                         ?>
                                     </tbody>
                                 </table>
-                                <?php
-                                    $query1 = "SELECT COUNT(*) AS total_rows FROM product";
-                                    $sumpage = countPage($query1, 6);
-                                    $nowPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                                    $nowPage = max(1, $nowPage);
-                                ?>
-
+                              
                                 <?php if ($sumpage > 1): ?>
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
-                                        <!-- Previous Page Link -->
+                                        <!-- Previous -->
                                         <li class="page-item <?php echo ($nowPage == 1) ? 'disabled' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VitaFruit/src/admin/product/show.php?page=<?php echo $nowPage - 1; ?>"
+                                                href="/VitaFruit/src/admin/product/show.php?page=<?php echo $nowPage - 1; ?>&keyword=<?php echo urlencode($keyword); ?>"
                                                 aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
 
-                                        <!-- Page Numbers -->
+                                        <!-- Page numbers -->
                                         <?php for ($i = 1; $i <= $sumpage; $i++): ?>
                                         <li class="page-item <?php echo ($i == $nowPage) ? 'active' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VitaFruit/src/admin/product/show.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                                href="/VitaFruit/src/admin/product/show.php?page=<?php echo $i; ?>&keyword=<?php echo urlencode($keyword); ?>">
+                                                <?php echo $i; ?>
+                                            </a>
                                         </li>
                                         <?php endfor; ?>
 
-                                        <!-- Next Page Link -->
+                                        <!-- Next -->
                                         <li class="page-item <?php echo ($nowPage == $sumpage) ? 'disabled' : ''; ?>">
                                             <a class="page-link"
-                                                href="/VitaFruit/src/admin/product/show.php?page=<?php echo $nowPage + 1; ?>"
+                                                href="/VitaFruit/src/admin/product/show.php?page=<?php echo $nowPage + 1; ?>&keyword=<?php echo urlencode($keyword); ?>"
                                                 aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                             </a>
@@ -132,6 +173,7 @@
                                     </ul>
                                 </nav>
                                 <?php endif; ?>
+
                             </div>
 
                         </div>
