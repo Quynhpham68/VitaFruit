@@ -1,5 +1,7 @@
 <?php
-        session_start();
+       if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         if (empty($_SESSION['user'])) {
             $cookie_name = 'remember_user';
             if (isset($_COOKIE[$cookie_name])) {

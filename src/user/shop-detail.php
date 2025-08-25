@@ -14,6 +14,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins&display=swap" 
+
             rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
@@ -111,50 +113,35 @@
                                 <p class="mb-4"><?php echo $product['category']?></p>
                                 <p class="mb-4">Đã bán: <?php echo $product['sold'] ?></p>
                                 <h5 class="fw-bold mb-3">
-                                    <?php 
+                                    <?php
                                     $price = floatval($product['price']); 
                                     $discountPrice = !empty($product['discount_price']) ? floatval($product['discount_price']) : 0;
-
-                                    if ($discountPrice > 0 && $discountPrice < $price) {
-                                        $percent = round((($price - $discountPrice) / $price) * 100);
-
-                                        // Giá đã giảm
-                                        echo '<p style="
-                                                font-weight:700; 
-                                                color:#333;  /* màu đen đậm giống hình */
-                                                font-size:1.25rem; 
-                                                font-family: Open Sans, sans-serif;
-                                                margin:0;">
-                                                $' . number_format($discountPrice, 0, ',', '.') . ' / kg
-                                            </p>';
-
-                                        // Giá gốc + % giảm
-                                        echo '<p style="
-                                                margin:0; 
-                                                font-family: Open Sans, sans-serif;
-                                                font-size:1rem;">
-                                                <span style="
-                                                    text-decoration: line-through; 
-                                                    color:#6c757d;  
-                                                    margin-right:10px;">
-                                                    $' . number_format($price, 0, ',', '.') . '
-                                                </span>
-                                                <span style="color:#d63737;">  
-                                                    Giảm: ' . $percent . '% 
-                                                </span>
-                                            </p>';
-                                    } else {
-                                        echo '<p style="
-                                                font-weight:700; 
-                                                color:#555  /* màu đen đậm */
-                                                font-size:1rem; 
-                                                font-family: Open Sans, sans-serif; 
-                                                margin:0;">
-                                                $' . number_format($price, 0, ',', '.') . ' / kg
-                                            </p>';
-                                    }
                                     ?>
 
+                                    <div style="font-family: 'Open Sans', sans-serif; line-height:1.4;">
+                                        <?php if($discountPrice > 0 && $discountPrice < $price): 
+                                            $percent = round((($price - $discountPrice)/$price)*100); ?>
+                                            
+                                            <!-- Giá giảm -->
+                                            <span style="font-family: 'Open Sans', sans-serif; font-weight:700; font-size:1.25rem; color:#333; display:block; margin-bottom:5px;">
+                                                <?= number_format($discountPrice, 0, ',', '.') ?> / kg
+                                            </span>
+                                            
+                                            <!-- Giá gốc + % giảm trên cùng 1 dòng -->
+                                            <span style="font-family: 'Open Sans', sans-serif; font-size:1rem; color:#6c757d; text-decoration:line-through; margin-right:10px;">
+                                                <?= number_format($price, 0, ',', '.') ?>
+                                            </span>
+                                            <span style="font-family: 'Open Sans', sans-serif; font-size:1rem; color:#d63737; font-weight:600;">
+                                                Giảm: <?= $percent ?>%
+                                            </span>
+                                            
+                                        <?php else: ?>
+                                            <!-- Giá bình thường -->
+                                            <span style="font-family: 'Open Sans', sans-serif; font-weight:700; font-size:1.5rem; color:#555; display:block;">
+                                                <?= number_format($price, 0, ',', '.') ?> / kg
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
                                 </h5>
 
 
@@ -320,34 +307,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Footer Start -->
-            <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-                <div class="container py-5">
-                    <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-                        <div class="row g-4">
-                            <div class="col-lg-6">
-                                <a href="#">
-                                    <h1 class="text-primary mb-0">VitaFruit</h1>
-                                    <p class="text-secondary mb-0">Rau củ sạch - Tươi mỗi ngày</p>
-                                </a>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d-flex justify-content-end pt-3">
-                                    <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
-                                            class="fab fa-youtube"></i></a>
-                                    <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
+          <!-- FOOTER -->
+          <?php include_once 'layout/footer.php'; ?>
 
 
             <!-- Back to Top -->

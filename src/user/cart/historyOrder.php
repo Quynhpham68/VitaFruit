@@ -119,7 +119,7 @@
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">
-                                    <?php echo $od['price']?> $
+                                    <?php echo number_format($od['price'], 0, '.', ','); ?>
                                 </p>
                             </td>
                             <td>
@@ -128,8 +128,8 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="mb-0 mt-4" data-cart-detail-id="${cartDetail.id}">
-                                    <?php echo $od['total_price']?> $
+                                <p class="mb-0 mt-4" data-cart-detail-id="<?php echo $od['id'] ?? ''; ?>">
+                                    <?php echo number_format($od['total_price'], 0, '.', ','); ?>
                                 </p>
                             </td>
                         </tr>

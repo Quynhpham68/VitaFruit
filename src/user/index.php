@@ -25,13 +25,11 @@ function format_price($price) {
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins&display=swap" rel="stylesheet">
-
-
+  
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
@@ -135,7 +133,7 @@ function format_price($price) {
                                             </div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4><?php echo $row['name']; ?></h4>
-                                                <p><?php echo $row['short_desc']; ?></p>
+                                                <p class="product-desc"><?php echo $row['short_desc']; ?></p>
                                                 <div class="text-center">
                                                     <?php
                                                         $price = $row['price'];
@@ -187,7 +185,7 @@ function format_price($price) {
                                             </div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4><?php echo $row['name']; ?></h4>
-                                                <p><?php echo $row['short_desc']; ?></p>
+                                                <p class="product-desc"><?php echo $row['short_desc']; ?></p>
                                                 <div class="text-center">
                                                     <?php
                                                         $price = $row['price'];
@@ -240,7 +238,7 @@ function format_price($price) {
                                             </div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4><?php echo $row['name']; ?></h4>
-                                                <p><?php echo $row['short_desc']; ?></p>
+                                                <p class="product-desc"><?php echo $row['short_desc']; ?></p>
                                                 <div class="text-center">
                                                     <?php
                                                         $price = $row['price'];

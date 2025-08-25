@@ -132,13 +132,17 @@
                                 </p>
                             </td>
                             <td>
-                                <p class="mb-0 mt-4">
+                                <p class="mb-0 mt-4" style="font-family: 'Open Sans', sans-serif; font-size: 1rem; line-height: 1.25;">
                                     <?php 
                                         if($cd['discount_price'] > 0) {
-                                            echo '<span class="text-decoration-line-through text-muted me-2">'.number_format($cd['price'], 0, ',', '.').' </span>';
-                                            echo '<span class="text-danger">'.number_format($cd['cdPrice'], 0, ',', '.').' </span>';
+                                            // Giá gốc
+                                            echo '<span class="text-decoration-line-through text-muted me-2" style="font-family: \'Open Sans\', sans-serif;">' . number_format($cd['price'], 0, ',', '.') . ' đ</span>';
+                                            
+                                            // Giá giảm
+                                            echo '<span class="text-danger" style="font-family: \'Open Sans\', sans-serif;">' . number_format($cd['cdPrice'], 0, ',', '.') . ' đ</span>';
                                         } else {
-                                            echo number_format($cd['price'], 0, ',', '.') ;
+                                            // Giá bình thường
+                                            echo '<span style="font-family: \'Open Sans\', sans-serif;">' . number_format($cd['price'], 0, ',', '.') . ' đ</span>';
                                         }
                                     ?>
                                 </p>
@@ -198,7 +202,7 @@
                     <div class="col-12 col-md-6">
                         <div class="bg-light rounded">
                             <div class="p-4">
-                                <h1 class="order-heading mb-4">Thông Tin <span class="fw-normal">Thanh
+                                <h1 class="order-heading mb-4" style="font-family: 'Open Sans', sans-serif; font-weight: 900;">Thông Tin <span class="fw-normal">Thanh
                                         Toán</span>
                                 </h1>
 

@@ -63,6 +63,14 @@
             $kq1 = mysqli_query($code, $query);
         }
 
+        // Cập nhật số lượng đã bán và số lượng tồn kho
+        $queryUpdate = "UPDATE product 
+                        SET sold = sold + $quantity,
+                            quantity = quantity - $quantity
+                        WHERE id = $productId";
+        mysqli_query($code, $queryUpdate);
+
+
         //Xóa sản phẩm trong cart_detail
         $query = "DELETE FROM cart_detail WHERE cartId = $cartId";
         $kq = mysqli_query($code, $query);

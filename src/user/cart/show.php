@@ -129,17 +129,22 @@
                             </td>
 
                             <td>
-                                <p class="mb-0 mt-4">
+                                <p class="mb-0 mt-4" style="font-family: 'Open Sans', sans-serif; font-size: 1rem; line-height: 1.25;">
                                     <?php 
                                         if($cd['discount_price'] > 0) {
-                                            echo '<span class="text-decoration-line-through text-muted me-2">'.number_format($cd['price'], 0, ',', '.').' đ</span>';
-                                            echo '<span class="text-danger">'.number_format($cd['cdPrice'], 0, ',', '.').' đ</span>';
+                                            // Giá gốc
+                                            echo '<span class="text-decoration-line-through text-muted me-2" style="font-family: \'Open Sans\', sans-serif;">' . number_format($cd['price'], 0, ',', '.') . ' đ</span>';
+                                            
+                                            // Giá giảm
+                                            echo '<span class="text-danger" style="font-family: \'Open Sans\', sans-serif;">' . number_format($cd['cdPrice'], 0, ',', '.') . ' đ</span>';
                                         } else {
-                                            echo number_format($cd['price'], 0, ',', '.') . ' đ';
+                                            // Giá bình thường
+                                            echo '<span style="font-family: \'Open Sans\', sans-serif;">' . number_format($cd['price'], 0, ',', '.') . ' đ</span>';
                                         }
                                     ?>
                                 </p>
                             </td>
+
 
                             <td>
                                 <?php if ($cd['slP'] > 0) { ?>
@@ -197,8 +202,8 @@
                     <div class="col-12 col-md-8">
                         <div class="bg-light rounded">
                             <div class="p-4" style="font-family: 'Open Sans', sans-serif; font-size: 16px; color: #333;">
-                                <h1 class="order-heading mb-4">Thông Tin <span class="fw-normal">Đơn
-                                        Hàng</span>
+                                <h1 class="order-heading mb-4" style="font-weight: 600;">
+                                    Thông Tin <span class="fw-normal">Đơn Hàng</span>
                                 </h1>
                                 <div class="d-flex justify-content-between mb-4">
                                     <h5 class="mb-0 me-4">Tạm tính:</h5>
@@ -208,9 +213,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-0 me-4">Phí vận chuyển</h5>
-                                    <div class="">
-                                        <p class="mb-0">0 đ</p>
-                                    </div>
+                                    <p class="mb-0">0 đ</p>
                                 </div>
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
@@ -219,35 +222,31 @@
                                     <?php echo number_format($totalPrice, 0, ',', '.'); ?> đ
                                 </p>
                             </div>
-                            <form action="/VitaFruit/src/user/cart/checkout.php?index=<?php echo $index?>"
-                                method="post">
-                                <div>
-                                    <?php
-                                            $index = 0;
-                                            $query = "SELECT cd.id, p.image, p.name, p.price, cd.quantity, (cd.quantity * p.price) as tien, p.quantity as slP, cd.price as cdPrice 
-                                                    FROM cart_detail cd JOIN product p ON cd.productId = p.id WHERE cd.cartId = ".$cartId;
-                                            $kq = mysqli_query($code, $query);
-                                            while ($cd = mysqli_fetch_assoc($kq)) {
-                                        ?>
-                                    <div class="mb-3">
-                                        <div class="form-group">
-                                            <input type="hidden" class="form-control" type="text"
-                                                value="<?php echo $cd['id']; ?>" name="id<?php echo $index; ?>" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="hidden" class="form-control" id="quantity<?php echo $index; ?>"
-                                                type="text" value="<?php echo $cd['quantity']; ?>"
-                                                name="quantity<?php echo $index; ?>" />
-                                        </div>
-                                    </div>
-                                    <?php
-                                                $index++;
-                                            }
-                                        ?>
-                                </div>
-                                <?php mysqli_close($code); ?>
-                                <button
-                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
+
+                            <!-- Form gửi sang checkout -->
+                            <form action="/VitaFruit/src/user/cart/checkout.php" method="post">
+                                <input type="hidden" name="cartId" value="<?php echo $cartId; ?>">
+
+                                <?php
+                                $index = 0;
+                                $query = "SELECT cd.id, cd.quantity, p.quantity as slP 
+                                        FROM cart_detail cd 
+                                        JOIN product p ON cd.productId = p.id 
+                                        WHERE cd.cartId = ".$cartId;
+                                $kq = mysqli_query($code, $query);
+                                while ($cd = mysqli_fetch_assoc($kq)) {
+                                    if ($cd['slP'] > 0) { // Chỉ gửi sản phẩm còn hàng
+                                ?>
+                                    <input type="hidden" name="id<?php echo $index; ?>" value="<?php echo $cd['id']; ?>">
+                                    <input type="hidden" name="quantity<?php echo $index; ?>" value="<?php echo $cd['quantity']; ?>">
+                                <?php
+                                        $index++;
+                                    }
+                                }
+                                mysqli_close($code);
+                                ?>
+
+                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
                                     Xác nhận thanh toán
                                 </button>
                             </form>
@@ -256,6 +255,7 @@
                     </div>
                 </div>
                 <?php endif; ?>
+
             </div>
         </div>
     </div>
