@@ -47,27 +47,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- LIÊN HỆ -->
 <div class="contact-container">
-    <h2 class="mb-4" style="color:#c20f1a;"><i class="fas fa-envelope me-2"></i>Liên hệ với VitaFruit</h2>
-    <p>Vui lòng để lại thông tin, chúng tôi sẽ phản hồi sớm nhất có thể.</p>
+    <h2 class="mb-4" style="color:#c20f1a;"><i class="fas fa-envelope me-2"></i>Phản hồi</h2>
+    <p>Vui lòng để lại thông tin phản hồi của bạn.</p>
 
     <form action="#" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Họ tên</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Nguyễn Văn A" required>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Nhập họ và tên của bạn" required>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Email liên hệ</label>
-            <input type="email" name="email" id="email" class="form-control" placeholder="example@email.com" required>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Nhập email của bạn" required>
         </div>
 
         <div class="mb-3">
             <label for="message" class="form-label">Nội dung</label>
-            <textarea name="message" id="message" rows="5" class="form-control" placeholder="Viết lời nhắn của bạn..." required></textarea>
+            <textarea name="message" id="message" rows="5" class="form-control" placeholder="Nhập chi tiết nội dung phản hồi" required></textarea>
         </div>
 
         <div class="d-grid">
-            <button type="submit" class="btn btn-success">Gửi liên hệ</button>
+            <button type="submit" class="btn btn-success">Gửi Phản hồi</button>
         </div>
     </form>
 </div>

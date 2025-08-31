@@ -1,0 +1,87 @@
+/* Thiết kế nút liên hệ chính */
+#contact-button {
+    background-color: #7DB300;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: fixed;
+    bottom: 100px;
+    left: 20px; 
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+#contact-button:hover {
+    background-color: #7DB300;
+}
+
+/* Thiết kế menu popup với hiệu ứng */
+#contact-popup {
+    position: fixed;
+    bottom: 150px;
+    left: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 0;
+    visibility: hidden; /* Ẩn hoàn toàn */
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Hiển thị popup với hiệu ứng */
+#contact-popup.show {
+    opacity: 1;
+    visibility: visible; /* Hiển thị popup */
+    transform: scale(1);
+}
+
+/* Thiết kế các tùy chọn liên hệ */
+.contact-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Màu nền riêng biệt cho từng tùy chọn */
+.contact-option.zalo {
+    background-color: #0065ff;
+}
+.contact-option.facebook {
+    background-color: #ea5367;
+}
+.contact-option.phone {
+    background-color: #58b058;
+}
+
+/* Icon và văn bản bên trong contact-option */
+.contact-option img,
+.contact-option i {
+    margin-right: 10px;
+    font-size: 20px;
+    width: 24px;
+    height: 24px;
+}
+
+.contact-option span {
+    white-space: nowrap;
+    color: #fff;
+}

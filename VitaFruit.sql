@@ -121,3 +121,7 @@ ADD COLUMN reply TEXT NOT NULL;
 ALTER TABLE contact
 ADD COLUMN user_id INT NULL,
 ADD CONSTRAINT contact_ibfk_1 FOREIGN KEY (user_id) REFERENCES user(id);
+ALTER TABLE `orders`
+ADD COLUMN `order_code` VARCHAR(50) NULL AFTER `id`,
+ADD COLUMN `total_amount` DECIMAL(10,2) NULL AFTER `phone`,
+ADD COLUMN `vnpay_status` ENUM('pending','success','failed') DEFAULT 'pending' AFTER `status`;

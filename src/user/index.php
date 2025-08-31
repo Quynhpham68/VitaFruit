@@ -83,6 +83,8 @@ function format_price($price) {
 
     <?php include 'api/chat.php'; 
     ?>
+    <?php include 'floating_contact.php'; 
+    ?>
 
 
     <!-- Fruits Shop Start-->
@@ -242,20 +244,21 @@ function format_price($price) {
                                                 <p class="product-desc"><?php echo $row['short_desc']; ?></p>
                                                 <div class="text-center">
                                                     <?php
-                                                        $price = $row['price'];
-                                                        $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
+                                                    $price = $row['price'];
+                                                    $discount = isset($row['discount_percent']) ? $row['discount_percent'] : 0;
 
-                                                        if ($discount > 0) {
-                                                            $discount_price = $price * (1 - $discount / 100);
-                                                            echo "<p class='text-dark fw-bold mb-1 text-center' style='font-size:1.25rem;'>" . format_price($discount_price) . " / kg</p>";
-                                                            echo "<p class='mb-0 text-center'>
-                                                                    <small class='text-muted text-decoration-line-through me-3'>" . format_price($price) . "</small>
-                                                                    <small class='text-danger'>Giảm: " . $discount . "%</small>
-                                                                </p>";
-                                                        } else {
-                                                            echo "<p class='text-dark fs-5 fw-bold mb-0 price'>" . format_price($price) . " / kg</p>";
-                                                        }
+                                                    if ($discount > 0) {
+                                                        $discount_price = $price * (1 - $discount / 100);
+                                                        echo "<p class='product-price'>" . format_price($discount_price) . " / kg</p>";
+                                                        echo "<p class='mb-0 text-center'>
+                                                                <small class='product-original'>" . format_price($price) . "</small>
+                                                                <small class='product-discount'>Giảm: " . $discount . "%</small>
+                                                            </p>";
+                                                    } else {
+                                                        echo "<p class='product-price'>" . format_price($price) . " / kg</p>";
+                                                    }
                                                     ?>
+
                                                 </div>
                                             </div>
                                         </a>

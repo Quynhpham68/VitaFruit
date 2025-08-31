@@ -206,18 +206,32 @@
                                         Toán</span>
                                 </h1>
 
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="mb-0 me-4">Phí vận chuyển</h5>
-                                    <div class="">
+                                <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+                                    <h5 class="mb-0">Phí vận chuyển</h5>
+                                    <div>
                                         <p class="mb-0">0 đ</p>
                                     </div>
                                 </div>
-                                <div class="mt-3 d-flex justify-content-between">
-                                    <h5 class="mb-0 me-4">Hình thức</h5>
-                                    <div class="">
-                                        <p class="mb-0">Thanh toán khi nhận hàng (COD)</p>
+
+                                <div class="mb-4">
+                                <h5 class="mb-3 mt-4">Hình thức thanh toán</h5>
+                                <div class="d-flex flex-column align-items-start">
+                                    <div class="form-check mb-2 d-flex align-items-center">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" value="COD" id="cod" checked>
+                                        <label class="form-check-label ms-2" for="cod">
+                                            Thanh toán khi nhận hàng (COD)
+                                        </label>
+                                    </div>
+                                    <div class="form-check d-flex align-items-center">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" value="VNPay" id="vnpay">
+                                        <label class="form-check-label ms-2" for="vnpay">
+                                            Thanh toán bằng tài khoản ngân hàng (VNPay)
+                                        </label>
                                     </div>
                                 </div>
+
+                            </div>
+
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>

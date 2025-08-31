@@ -48,4 +48,24 @@
         opacity: 0;
     }
 }
+/* CSS cho giá và giảm giá */
+.product-price {
+    font-size: 1.8rem !important;
+    font-weight: 900 !important;
+    color: #111 !important;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.product-original {
+    text-decoration: line-through !important;
+    color: #888 !important;
+    font-weight: 700 !important;
+    margin-right: 8px;
+}
+
+.product-discount {
+    color: #c00 !important;
+    font-weight: 900 !important;
+}
 

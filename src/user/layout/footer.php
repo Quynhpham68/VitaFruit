@@ -56,13 +56,13 @@
           <li class="mb-2"><a class="text-white-50 text-decoration-none" href="index.php">Trang chủ</a></li>
           <li class="mb-2"><a class="text-white-50 text-decoration-none" href="about.php">Giới thiệu</a></li>
           <li class="mb-2"><a class="text-white-50 text-decoration-none" href="shop.php">Sản phẩm</a></li>
-          <li class="mb-2"><a class="text-white-50 text-decoration-none" href="contact.php">Liên hệ</a></li>
+          <li class="mb-2"><a class="text-white-50 text-decoration-none" href="contact.php">Phản hồi</a></li>
         </ul>
       </div>
 
-      <!-- Liên hệ -->
+      <!-- Phản hồi -->
       <div class="col-lg-3 col-md-12 offset-lg-1">
-        <h5 class="text-white mb-3 fw-bold" >Liên hệ</h5>
+        <h5 class="text-white mb-3 fw-bold" >Phản hồi</h5>
         <p class="mb-2"><i class="fa fa-map-marker-alt me-2"></i>Trung Mỹ Tây, Quận 12, TP.HCM</p>
         <p class="mb-2"><i class="fa fa-envelope me-2"></i>VitaFruit25@gmail.com</p>
         <p class="mb-2"><i class="fa fa-phone me-2"></i>0123456780</p>

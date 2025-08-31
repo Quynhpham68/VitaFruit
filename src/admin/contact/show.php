@@ -12,7 +12,7 @@ role($username);
 
 <head>
     <meta charset="utf-8" />    
-    <title>Quản lý Liên hệ</title>
+    <title>Quản lý phản hồi</title>
     <link href="../resources/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -24,17 +24,17 @@ role($username);
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Liên hệ</h1>
+                    <h1 class="mt-4">Phản hồi</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="/VitaFruit/src/admin/dashboard/show.php">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Liên hệ</li>
+                        <li class="breadcrumb-item active">Phản hồi</li>
                     </ol>
 
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-12 mx-auto">
                                 <div class="d-flex justify-content-between">
-                                    <h3>DANH SÁCH LIÊN HỆ TỪ NGƯỜI DÙNG</h3>
+                                    <h3>DANH SÁCH PHẢN HỒI TỪ NGƯỜI DÙNG</h3>
                                 </div>
                                 <hr />
                                 <table class="table table-bordered table-hover" style="text-align: center;">

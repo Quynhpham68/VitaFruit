@@ -22,7 +22,7 @@
                     </a>
                     <a href="/VitaFruit/src/user/contact.php" 
                     class="nav-item nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'contact.php') echo 'active'; ?>">
-                    Liên hệ
+                    Phản hồi
                     </a>
                 </div>
                 <div class="d-flex m-3 me-0">

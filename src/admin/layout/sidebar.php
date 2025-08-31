@@ -24,11 +24,11 @@
                 </a>
                 <a class="nav-link" href="/VitaFruit/src/admin/review/show.php?page=1">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Phản hồi
+                    Đánh giá
                 </a>
                  <a class="nav-link" href="/VitaFruit/src/admin/contact/show.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
-                    Liên hệ
+                    Phản hồi
                 </a>
             </div>
         </div>
