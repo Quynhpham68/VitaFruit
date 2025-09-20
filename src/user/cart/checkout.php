@@ -222,12 +222,12 @@
                                             Thanh toán khi nhận hàng (COD)
                                         </label>
                                     </div>
-                                    <div class="form-check d-flex align-items-center">
+                                    <!-- <div class="form-check d-flex align-items-center">
                                         <input class="form-check-input" type="radio" name="paymentMethod" value="VNPay" id="vnpay">
                                         <label class="form-check-label ms-2" for="vnpay">
                                             Thanh toán bằng tài khoản ngân hàng (VNPay)
                                         </label>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>
