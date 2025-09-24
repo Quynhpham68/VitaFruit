@@ -60,7 +60,7 @@
             if(empty($error))
             {
                 $file = "";
-                if (isset($_FILES['MinhTriFile']['tmp_name']) && !empty($_FILES['DiemQuynhFile']['tmp_name'])) {
+                if (isset($_FILES['DiemQuynhFile']['tmp_name']) && !empty($_FILES['DiemQuynhFile']['tmp_name'])) {
                     $file = time() . ".jpg";
                     $tenFile = "C:/xampp/htdocs/VitaFruit/img/avatar/" . $file;
                     move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
@@ -147,7 +147,7 @@
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Ảnh đại diện:</label>
                                         <input class="form-control" type="file" id="avatarFile"
-                                            accept=".png, .jpg, .jpeg" name="MinhTriFile" />
+                                            accept=".png, .jpg, .jpeg" name="DiemQuynhFile" />
                                     </div>
 
                                     <div class="col-12 mb-3">
