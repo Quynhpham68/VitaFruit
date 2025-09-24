@@ -141,7 +141,7 @@
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Hình ảnh:</label>
                                         <input class="form-control" type="file" id="avatarFile"
-                                            accept=".png, .jpg, .jpeg" name="MinhTriFile" />
+                                            accept=".png, .jpg, .jpeg" name="DiemQuynhFile" />
                                     </div>
                                     <div class="col-12 mb-3">
                                         <img style="max-height: 250px; display: none;" alt="avatar preview"
@@ -165,7 +165,7 @@
                 $code = connect();
                 $file = time().".jpg";
                 $tenFile = "C:/xampp/htdocs/VitaFruit/img/product/".$file;
-                $result = move_uploaded_file($_FILES['MinhTriFile']['tmp_name'], $tenFile);
+                $result = move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
                 $query =  "INSERT INTO product (name, price, details_desc, short_desc, factory, quantity, sold, image, category )
                     VALUES ('$name', $price, '$details_desc', '$short_desc', '$factory', $quantity, 0, '$file', '$category')";
                 $kq = mysqli_query($code, $query);

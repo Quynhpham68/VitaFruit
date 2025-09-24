@@ -61,7 +61,7 @@
             if(empty($error))
             {
                 $file = "";
-                if (isset($_FILES['MinhTriFile']['tmp_name']) && !empty($_FILES['MinhTriFile']['tmp_name'])) {
+                if (isset($_FILES['DiemQuynhFile']['tmp_name']) && !empty($_FILES['DiemQuynhFile']['tmp_name'])) {
                     $file = time() . ".jpg";
                     $tenFile = "C:/xampp/htdocs/VitaFruit/img/avatar/" . $file;
                     move_uploaded_file($_FILES['DiemQuynhFile']['tmp_name'], $tenFile);
