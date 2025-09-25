@@ -41,7 +41,7 @@
                                             class="form-control me-2" 
                                             type="search" 
                                             name="keyword" 
-                                            placeholder="Tìm sản phẩm..." 
+                                            placeholder="Tìm người dùng..." 
                                             value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>"
                                             id="searchInput"
                                         >
