@@ -69,6 +69,17 @@ const generateBotResponse = async (incomingMessageDiv) => {
             role: "model",
             parts: [{ text: apiResponseText }]
         });
+
+        // Lưu vào DB
+        await fetch("api/chat_db.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                action: "save",
+                question: userData.message,
+                reply: apiResponseText
+            })
+        });
     } catch (error) {
         messageElement.innerText = error.message;
         messageElement.style.color = "#ff0000";
@@ -285,4 +296,24 @@ messageInput.addEventListener("keydown", async (e) => {
     if (e.key === "Enter" && userMessage && !e.shiftKey && window.innerWidth > 768) {
         await handleOutgoingMessageWithDB(e);
     }
+});
+
+// Load lịch sử chat khi mở trang
+window.addEventListener("DOMContentLoaded", async () => {
+    const response = await fetch("api/chat_db.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "load" })
+    });
+    const messages = await response.json();
+
+    messages.forEach(msg => {
+        const userMsg = createMessageElement(`<div class="message-text">${msg.question}</div>`, "user-message");
+        chatBody.appendChild(userMsg);
+
+        const botMsg = createMessageElement(`<div class="message-text">${msg.reply}</div>`, "bot-message");
+        chatBody.appendChild(botMsg);
+    });
+
+    chatBody.scrollTop = chatBody.scrollHeight;
 });
